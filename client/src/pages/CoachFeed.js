@@ -1,17 +1,17 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const CoachFeed = () => {
-  let navigate = useNavigate();
-  const [viewAllPlayers, setViewAllPlayers] = useState([]);
+const CoachFeed = (props) => {
+  let navigate = useNavigate()
+  const [viewAllPlayers, setViewAllPlayers] = useState([])
 
   useEffect(() => {
-    const getPlayer = async () => {};
-  });
+    const getPlayer = async () => {}
+  })
   const showPlayer = (player) => {
-    navigate(`${player.id}`);
-  };
+    navigate(`${player.id}`)
+  }
 
   return (
     <div className="player-grid">
@@ -23,7 +23,7 @@ const CoachFeed = () => {
           key={player.id}
         >
           <img
-            style={{ display: "block" }}
+            style={{ display: 'block' }}
             src={player.proPic}
             alt={player.name}
           />
@@ -31,7 +31,7 @@ const CoachFeed = () => {
         </div>
       ))}
     </div>
-  );
-};
+  )
+}
 
-export default CoachFeed;
+export default CoachFeed

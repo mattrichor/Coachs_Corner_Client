@@ -6,6 +6,8 @@ const Register = () => {
   const [formValues, setFormValues] = useState({
     name: '',
     email: '',
+    sport: '',
+    teamName: '',
     password: '',
     confirmPassword: ''
   })
@@ -17,6 +19,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await {
+      // await RegisterUser({
       name: formValues.name,
       email: formValues.email,
       password: formValues.password
@@ -27,7 +30,7 @@ const Register = () => {
       password: '',
       confirmPassword: ''
     })
-    if (formValues.password != formValues.confirmPassword) {
+    if (formValues.password !== formValues.confirmPassword) {
       alert('Passwords do not match! Please try again!')
     } else {
       navigate('/signin')
@@ -38,7 +41,7 @@ const Register = () => {
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="name">Full Name</label>
+            <label htmlFor="name">Full Name:</label>
             <input
               onChange={handleChange}
               name="name"
@@ -49,7 +52,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email:</label>
             <input
               onChange={handleChange}
               name="email"
@@ -59,9 +62,30 @@ const Register = () => {
               required
             />
           </div>
-
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="sport">Sport:</label>
+            <input
+              onChange={handleChange}
+              name="sport"
+              type="text"
+              placeholder="Sport Here"
+              value={formValues.sport}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="teamName">Team Name:</label>
+            <input
+              onChange={handleChange}
+              name="teamName"
+              type="text"
+              placeholder="Team Name Here"
+              value={formValues.teamName}
+              required
+            />
+          </div>
+          <div className="input-wrapper">
+            <label htmlFor="password">Password:</label>
             <input
               onChange={handleChange}
               type="password"
@@ -71,7 +95,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="confirmPassword">Confirm Password</label>
+            <label htmlFor="confirmPassword">Confirm Password:</label>
             <input
               onChange={handleChange}
               type="password"

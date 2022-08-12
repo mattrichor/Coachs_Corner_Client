@@ -14,7 +14,7 @@ const SignIn = (props) => {
     e.preventDefault()
     const payload = await SignInUser(formValues)
     setFormValues({ email: '', password: '' })
-    props.setUser(payload)
+    props.setCoach(payload)
     props.toggleAuthenticated(true)
     navigate('/coachfeed')
   }
@@ -47,6 +47,7 @@ const SignIn = (props) => {
           <button disabled={!formValues.email || !formValues.password}>
             Sign In
           </button>
+          <br></br>
           <button
             onClick={() => {
               navigate('/register')

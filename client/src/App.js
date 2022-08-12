@@ -56,7 +56,10 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/register/coach" element={<CoachRegister />} />
           <Route path="/register/player" element={<PlayerRegister />} />
-          <Route path="/coachfeed" element={<CoachFeed />} />
+          <Route
+            path="/coachfeed"
+            element={<CoachFeed coach={coach} authenticated={authenticated} />}
+          />
           <Route />
         </Routes>
       </main>

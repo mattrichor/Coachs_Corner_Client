@@ -145,7 +145,7 @@ const Register = () => {
             <input
               onChange={handleChange}
               name="isActive"
-              type="number"
+              type="boolean"
               placeholder="True or False?"
               value={formValues.isActive}
               required

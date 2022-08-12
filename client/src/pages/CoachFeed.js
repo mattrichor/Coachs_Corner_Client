@@ -1,14 +1,37 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const CoachFeed = () => {
-  let navigate = useNavigate()
-  const [viewAllPlayers, setViewAllPlayers] = useState([])
+  let navigate = useNavigate();
+  const [viewAllPlayers, setViewAllPlayers] = useState([]);
 
   useEffect(() => {
-    const getAllPlayers = async () => {}
-  })
-  return <div>CoachFeed</div>
-}
+    const getPlayer = async () => {};
+  });
+  const showPlayer = (player) => {
+    navigate(`${player.id}`);
+  };
 
-export default CoachFeed
+  return (
+    <div className="player-grid">
+      CoachFeed
+      {props.players.map((player) => (
+        <div
+          className="player-card"
+          onClick={() => showPlayer(player)}
+          key={player.id}
+        >
+          <img
+            style={{ display: "block" }}
+            src={player.proPic}
+            alt={player.name}
+          />
+          <h3>{player.name}</h3>
+        </div>
+      ))}
+    </div>
+  );
+};
+
+export default CoachFeed;

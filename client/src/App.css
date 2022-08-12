@@ -7,6 +7,26 @@ body {
   background-color: #cdd7e2;
 }
 
+.player-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.player-card {
+  padding: 1em;
+  width: 18em;
+  height: 15em;
+  background-color: rgb(36, 47, 85);
+  border-radius: 0.5em;
+  margin: 1em;
+  justify-content: space-around;
+  box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.527);
+  color: white;
+  font-family: 'Georgia';
+  cursor: pointer;
+}
+
 .navbar {
   justify-content: space-between;
   align-items: center;

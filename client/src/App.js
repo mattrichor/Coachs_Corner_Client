@@ -1,22 +1,58 @@
 import './App.css'
 import Nav from './components/Nav'
 import { Routes, Route } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { CheckSession } from './services/Auth'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import Register from './pages/Register'
+import CoachFeed from './pages/CoachFeed'
 
 function App() {
+  const [authenticated, toggleAuthenticated] = useState(false)
+  const [coach, setCoach] = useState(null)
+
+  const handleLogOut = () => {
+    setCoach(null)
+    toggleAuthenticated(false)
+    localStorage.clear()
+  }
+
+  const checkToken = async () => {
+    const coach = await CheckSession()
+    setCoach(coach)
+    toggleAuthenticated(true)
+  }
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
   return (
     <div>
       <header>
-        <Nav />
+        <Nav
+          authenticated={authenticated}
+          coach={coach}
+          handleLogOut={handleLogOut}
+        />
       </header>
       <main>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/signin" element={<SignIn />} />
+          <Route
+            path="/signin"
+            element={
+              <SignIn
+                setCoach={setCoach}
+                toggleAuthenticated={toggleAuthenticated}
+              />
+            }
+          />
           <Route path="/register" element={<Register />} />
-          <Route />
+          <Route path="/coachfeed" element={<CoachFeed />} />
           <Route />
         </Routes>
       </main>

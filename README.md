@@ -1,6 +1,6 @@
 # Coachs_Corner
 
-## Date: 8/11/2022
+## Date: 8/10/2022
 
 ## TEAM
 
@@ -24,7 +24,7 @@ Coaching, Gameified! This app will be used to help coaches to see player skills,
 
 ---
 
-### **_Client_**
+### **_Backend_**
 
 Backend Located at: [GitHub](https://github.com/mattrichor/Coachs_Corner_backend)
 
@@ -32,15 +32,19 @@ Backend Located at: [GitHub](https://github.com/mattrichor/Coachs_Corner_backend
 
 ### **_Technologies Used_**
 
-PERN Stack
-PostgreSQL
-Express
-React JS
-Node JS
+#### **PERN Stack**
+
+- PostgreSQL
+- Express
+- React JS
+  - Axios for the API call
+- Node JS
 
 ---
 
-### **_Getting Started_**
+### **_Presentation_**
+
+[GoogleSheets](https://docs.google.com/presentation/d/1TBqEqVnjRmM86nm8Xn7v2wmPUrFsIkv1JCl6DyhUzYk/edit#slide=id.gd251bb473_0_600)
 
 ##### Diagrams:
 

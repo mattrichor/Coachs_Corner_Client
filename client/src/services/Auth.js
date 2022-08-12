@@ -11,9 +11,18 @@ export const SignInUser = async (data) => {
   }
 }
 
-export const RegisterUser = async (data) => {
+export const RegisterCoach = async (data) => {
   try {
-    const res = await Client.post('/auth/register', data)
+    const res = await Client.post('/auth/register/coach', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const RegisterPlayer = async (data) => {
+  try {
+    const res = await Client.post('/auth/register/player', data)
     return res.data
   } catch (error) {
     throw error

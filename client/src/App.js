@@ -6,6 +6,8 @@ import { CheckSession } from './services/Auth'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import Register from './pages/Register'
+import CoachRegister from './pages/CoachRegister'
+import PlayerRegister from './pages/PlayerRegister'
 import CoachFeed from './pages/CoachFeed'
 
 function App() {
@@ -52,6 +54,8 @@ function App() {
             }
           />
           <Route path="/register" element={<Register />} />
+          <Route path="/register/coach" element={<CoachRegister />} />
+          <Route path="/register/player" element={<PlayerRegister />} />
           <Route path="/coachfeed" element={<CoachFeed />} />
           <Route />
         </Routes>

@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
+import { GetPlayers } from '../services/GetPlayers'
 
-const CoachFeed = () => {
-  // let navigate = useNavigate()
-  // const [viewAllPlayers, setViewAllPlayers] = useState([])
+const CoachFeed = ({ coach }) => {
+  let navigate = useNavigate()
+  const [allPlayers, setAllPlayers] = useState([])
 
-  // useEffect(() => {
-  //   const getPlayer = async () => {}
-  // })
+  useEffect(() => {
+    const handlePlayers = async () => {
+      const data = await GetPlayers(coach.id)
+
+      setAllPlayers(data)
+      console.log(data)
+    }
+    handlePlayers()
+  }, [])
   // const showPlayer = (player) => {
   //   navigate(`${player.id}`)
   // }

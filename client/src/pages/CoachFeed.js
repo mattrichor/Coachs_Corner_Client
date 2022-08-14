@@ -24,6 +24,7 @@ const CoachFeed = () => {
         >
           <img
             style={{ display: "block" }}
+            img
             src={player.proPic}
             alt={player.name}
           />

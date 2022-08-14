@@ -21,7 +21,7 @@ const CoachFeed = ({ coach }) => {
   //   navigate(`${player.id}`)
   // }
   return (
-    <div className="post-card">
+    <div className="player-card">
       {allPlayers.map((res) => (
         <PlayerCard
           key={res.id}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { GetPlayers } from '../services/GetPlayers'
+import PlayerCard from '../components/PlayerCard'
 
 const CoachFeed = ({ coach }) => {
   let navigate = useNavigate()
@@ -19,26 +20,25 @@ const CoachFeed = ({ coach }) => {
   // const showPlayer = (player) => {
   //   navigate(`${player.id}`)
   // }
-  return
-  // return (
-  //   <div className="player-grid">
-  //     CoachFeed
-  //     {props.players.map((player) => (
-  //       <div
-  //         className="player-card"
-  //         onClick={() => showPlayer(player)}
-  //         key={player.id}
-  //       >
-  //         <img
-  //           style={{ display: 'block' }}
-  //           src={player.proPic}
-  //           alt={player.name}
-  //         />
-  //         <h3>{player.name}</h3>
-  //       </div>
-  //     ))}
-  //   </div>
-  // )
+  return (
+    <div className="post-card">
+      {allPlayers.map((res) => (
+        <PlayerCard
+          key={res.id}
+          name={res.name}
+          email={res.email}
+          height={res.height}
+          weight={res.weight}
+          age={res.age}
+          primaryPos={res.primaryPosition}
+          secondaryPos={res.secondaryPosition}
+          id={res.id}
+          likes={res.likes}
+          isActive={res.isActive}
+        ></PlayerCard>
+      ))}
+    </div>
+  )
 }
 
 export default CoachFeed

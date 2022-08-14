@@ -1,0 +1,22 @@
+/* #cdd7e2; grey/blue, #07173d; navy blue, #f9763d; orange, #2c7bd2 light blue*/
+
+.player-rectangle {
+  max-width: 250px;
+  height: 325px;
+  border-radius: 0.5rem;
+  background-color: #1b1b1b;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.player-name {
+  background-color: #2c7bd2;
+}
+
+.player-cards {
+  padding: 2em 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 275px);
+  grid-gap: 1em;
+  justify-content: center;
+}

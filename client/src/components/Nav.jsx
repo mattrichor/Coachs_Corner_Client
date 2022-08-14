@@ -5,8 +5,8 @@ const Nav = ({ authenticated, coach, handleLogOut }) => {
   if (coach) {
     authenticatedOptions = (
       <nav className="navbar">
-        <h3>Welcome {coach.name}!</h3>
-        <NavLink to="/feed">Feed</NavLink>
+        <h3>Welcome Coach {coach.name}!</h3>
+        <NavLink to="/coachfeed">Feed</NavLink>
         <NavLink onClick={handleLogOut} to="/">
           Sign Out
         </NavLink>

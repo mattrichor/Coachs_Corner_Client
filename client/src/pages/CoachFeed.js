@@ -18,10 +18,8 @@ const CoachFeed = ({ coach }) => {
       console.log(data)
     }
     handlePlayers()
-  }, [])
-  // const showPlayer = (player) => {
-  //   navigate(`${player.id}`)
-  // }
+  }, [coach])
+
   return (
     <div className="player-cards">
       {allPlayers.map((res) => (
@@ -35,8 +33,8 @@ const CoachFeed = ({ coach }) => {
           primaryPos={res.primaryPosition}
           secondaryPos={res.secondaryPosition}
           id={res.id}
-          likes={res.likes}
           isActive={res.isActive}
+          proPic={res.proPic}
         ></PlayerCard>
       ))}
     </div>

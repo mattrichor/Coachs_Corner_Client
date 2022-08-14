@@ -1,3 +1,5 @@
+import '../Feed.css'
+
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
@@ -21,7 +23,7 @@ const CoachFeed = ({ coach }) => {
   //   navigate(`${player.id}`)
   // }
   return (
-    <div className="player-card">
+    <div className="player-cards">
       {allPlayers.map((res) => (
         <PlayerCard
           key={res.id}

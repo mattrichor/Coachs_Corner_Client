@@ -3,16 +3,22 @@ import Nav from './components/Nav'
 import { Routes, Route } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { CheckSession } from './services/Auth'
+import { GetPlayers } from './services/GetPlayers'
 import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import Register from './pages/Register'
 import CoachRegister from './pages/CoachRegister'
 import PlayerRegister from './pages/PlayerRegister'
+import PlayerDetails from './pages/PlayerDetails'
 import CoachFeed from './pages/CoachFeed'
+import { useNavigate } from 'react-router-dom'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
   const [coach, setCoach] = useState(null)
+  const [allPlayers, setAllPlayers] = useState([])
+  const [selectedPlayer, setSelectedPlayer] = useState(null)
+  let navigate = useNavigate()
 
   const handleLogOut = () => {
     setCoach(null)
@@ -26,12 +32,28 @@ function App() {
     toggleAuthenticated(true)
   }
 
+  const choosePlayer = (selected) => {
+    setSelectedPlayer(selected)
+    navigate(`/players/${selected.id}`)
+  }
+
   useEffect(() => {
     const token = localStorage.getItem('token')
     if (token) {
       checkToken()
     }
   }, [])
+
+  useEffect(() => {
+    const handlePlayers = async () => {
+      const data = await GetPlayers(coach.id)
+
+      setAllPlayers(data)
+      console.log(data)
+    }
+    handlePlayers()
+  }, [coach])
+
   return (
     <div>
       <header>
@@ -58,7 +80,18 @@ function App() {
           <Route path="/register/player" element={<PlayerRegister />} />
           <Route
             path="/coachfeed"
-            element={<CoachFeed coach={coach} authenticated={authenticated} />}
+            element={
+              <CoachFeed
+                coach={coach}
+                authenticated={authenticated}
+                choosePlayer={choosePlayer}
+                allPlayers={allPlayers}
+              />
+            }
+          />
+          <Route
+            path="/players/:playerId"
+            element={<PlayerDetails player={selectedPlayer} />}
           />
           <Route />
         </Routes>

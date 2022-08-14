@@ -11,6 +11,8 @@ const PlayerDetails = ({ player }) => {
 
   return (
     <div className="player-page">
+      <h1 className="player-name">{player.name}</h1>
+      <h3 className="player-email">{player.email}</h3>
       <div className="player-info">
         <div className="player-grid">
           <div>

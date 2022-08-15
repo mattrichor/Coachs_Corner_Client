@@ -23,3 +23,24 @@ h2 {
 .empty {
   margin: -10px;
 }
+
+.player-stats-and-pic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.skills {
+  border-bottom: 3pt solid;
+  margin-left: 15px;
+}
+
+.skills-graph,
+.pic {
+  justify-items: center;
+  align-items: center;
+  border: 1px solid;
+  height: 500px;
+  width: 90%;
+  margin-left: 15px;
+  margin-top: -15px;
+}

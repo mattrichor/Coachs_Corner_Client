@@ -14,7 +14,11 @@ ChartJs.register(CategoryScale, LinearScale, BarElement)
 const SkillChart = ({ chartData }) => {
   return (
     <div>
-      <Bar data={chartData} />
+      {chartData !== {} ? (
+        <Bar data={chartData} />
+      ) : (
+        <span>Loading Chart, Please Wait...</span>
+      )}
     </div>
   )
 }

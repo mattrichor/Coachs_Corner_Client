@@ -6,8 +6,9 @@ import {
   handleDelete,
   handleUpdate
 } from '../services/Workouts'
+import { useParams } from 'react-router-dom'
 
-const NewWorkoutForm = ({ player }) => {
+const NewWorkoutForm = () => {
   const [playerWorkouts, setPlayerWorkouts] = useState([])
   const [newWorkout, setNewWorkout] = useState([])
   const [workouts, setAllWorkouts] = useState([])
@@ -17,13 +18,21 @@ const NewWorkoutForm = ({ player }) => {
     completionDate: '',
     skillIncrease: ''
   }
+  let { playerId } = useParams()
+  const [player, setPlayer] = useState([])
+
+  useEffect(() => {
+    const playerName = localStorage.getItem('player')
+    let selplayer = JSON.parse(playerName)
+    setPlayer(selplayer)
+  }, [])
 
   const [formState, setFormState] = useState(initialState)
   const [submitted, setSubmitted] = useState(true)
 
   useEffect(() => {
     const handleWorkouts = async () => {
-      const data = await getWorkouts(player.id)
+      const data = await getWorkouts(playerId)
       setPlayerWorkouts(data)
       console.log(data)
     }
@@ -81,6 +90,7 @@ const NewWorkoutForm = ({ player }) => {
           the form!
         </h1>
         <select>
+          <option value="nothing"></option>
           {workouts.map((workout) => (
             <option value="allWorkouts">{workout.title}</option>
           ))}

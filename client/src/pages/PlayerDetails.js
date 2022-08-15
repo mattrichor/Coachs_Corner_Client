@@ -140,6 +140,15 @@ const PlayerDetails = () => {
             <h2>{secondaryPosAbr}</h2>
           </div>
         </div>
+        <div className="workoutButton">
+          <button
+            onClick={() => {
+              navigate(`/newworkout/${playerId}`)
+            }}
+          >
+            Create a workout for {player.name}
+          </button>
+        </div>
       </div>
       <div className="player-stats-and-pic">
         <div className="stat-graph">
@@ -154,13 +163,6 @@ const PlayerDetails = () => {
             <img className="pic" src={player.proPic}></img>
           </div>
         </div>
-        <button
-          onClick={() => {
-            navigate(`/newworkout/${playerId}`)
-          }}
-        >
-          Create a workout for {player.name}
-        </button>
       </div>
     </div>
   )

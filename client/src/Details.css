@@ -38,7 +38,6 @@ h2 {
   margin-left: 15px;
 }
 
-.skills-graph,
 .pic {
   justify-items: center;
   align-items: center;
@@ -51,4 +50,8 @@ h2 {
 
 .fake {
   color: transparent;
+}
+
+.skills-graph {
+  margin-top: 150px;
 }

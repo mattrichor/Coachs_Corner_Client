@@ -4,18 +4,28 @@ import {
   Chart as ChartJs,
   BarElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  Title,
+  Tooltip,
+  Legend
 } from 'chart.js'
 
 import React from 'react'
 
-ChartJs.register(CategoryScale, LinearScale, BarElement)
+ChartJs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const SkillChart = ({ chartData }) => {
   return (
-    <div>
+    <div className="chart">
       {chartData !== {} ? (
-        <Bar data={chartData} />
+        <Bar
+          data={chartData}
+          options={{
+            maintainAspectRatio: false,
+            indexAxis: 'y',
+            scales: {}
+          }}
+        />
       ) : (
         <span>Loading Chart, Please Wait...</span>
       )}

@@ -1,0 +1,46 @@
+.player-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 2fr;
+}
+
+.player-grid {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+}
+
+.grid-top,
+.grid-bottom {
+  border-left: 3pt solid;
+}
+
+h4,
+h2 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 15px;
+}
+
+.empty {
+  margin: -10px;
+}
+
+.player-stats-and-pic {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.skills {
+  border-bottom: 3pt solid;
+  margin-left: 15px;
+}
+
+.skills-graph,
+.pic {
+  justify-items: center;
+  align-items: center;
+  border: 1px solid;
+  height: 500px;
+  width: 90%;
+  margin-left: 15px;
+  margin-top: -15px;
+}

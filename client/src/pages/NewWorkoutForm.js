@@ -10,6 +10,7 @@ import {
 const NewWorkoutForm = ({ player }) => {
   const [playerWorkouts, setPlayerWorkouts] = useState([])
   const [newWorkout, setNewWorkout] = useState([])
+  const [workouts, setAllWorkouts] = useState([])
   const initialState = {
     title: '',
     description: '',
@@ -29,6 +30,14 @@ const NewWorkoutForm = ({ player }) => {
     handleWorkouts()
   }, [player])
 
+  useEffect(() => {
+    const getAllWorkouts = async () => {
+      const data = await allWorkouts()
+      setAllWorkouts(data)
+    }
+    getAllWorkouts()
+  }, [])
+
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.id]: event.target.value })
   }
@@ -36,9 +45,21 @@ const NewWorkoutForm = ({ player }) => {
   const submitHandle = async (event) => {
     event.preventDefault()
     const data = await handleSubmit()
+    console.log(data)
     setFormState(initialState)
     setSubmitted(true)
     event.target.reset()
+  }
+
+  const deleteHandle = async () => {
+    const data = await handleDelete().catch((error) => console.log(error))
+    console.log(data)
+  }
+
+  const updateHandle = async () => {
+    const data = await handleUpdate()
+      .then((data) => console.log(data.status))
+      .catch((error) => console.log(error))
   }
 
   return (
@@ -53,6 +74,17 @@ const NewWorkoutForm = ({ player }) => {
             <p>This workout will increase skill by: {workout.skillIncrease}</p>
           </div>
         ))}
+      </div>
+      <div>
+        <h1>
+          Choose a new workout from the drop down below, or add in your own with
+          the form!
+        </h1>
+        <select>
+          {workouts.map((workout) => (
+            <option value="allWorkouts">{workout.title}</option>
+          ))}
+        </select>
       </div>
     </div>
   )

@@ -2,9 +2,9 @@ import '../Details.css'
 import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJs,
-  BarElement,
   CategoryScale,
-  LinearScale
+  LinearScale,
+  BarElement
 } from 'chart.js'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
@@ -36,6 +36,7 @@ const PlayerDetails = ({ player }) => {
         datasets: [
           {
             data: data.map((skill) => skill.skillLevel),
+
             backgroundColor: [
               '#f9763d',
               '#f9763d',
@@ -45,7 +46,10 @@ const PlayerDetails = ({ player }) => {
               '#f9763d'
             ]
           }
-        ]
+        ],
+        options: {
+          indexAxis: 'y'
+        }
       })
       console.log(chartData)
       console.log(data)
@@ -107,7 +111,7 @@ const PlayerDetails = ({ player }) => {
   return (
     <div className="player-page">
       {/* <button onClick={(e) => populateChart(e)}>Populate Chart!</button> */}
-      <h1 className="player-name">{player.name}</h1>
+      <h1 className="player-detail-name">{player.name}</h1>
       <h6 className="player-email">{player.email}</h6>
       <div className="player-info">
         <div className="player-grid">
@@ -150,7 +154,11 @@ const PlayerDetails = ({ player }) => {
         <div className="stat-graph">
           <h1 className="skills">Skills</h1>
           <div className="skills-graph">
-            <SkillChart chartData={chartData} />
+            {chartData !== {} ? (
+              <SkillChart chartData={chartData} />
+            ) : (
+              <span></span>
+            )}
           </div>
         </div>
         <div>

@@ -1,5 +1,4 @@
-/* #cdd7e2; grey/blue, #07173d; navy blue, #f9763d; orange, #2c7bd2 light blue*/
-
+/* #CDD7E2; grey/blue, #07173D; navy blue, #F9763D; orange, #2C7BD2 light blue*/
 .player-rectangle {
   max-width: 250px;
   height: 325px;
@@ -8,25 +7,22 @@
   cursor: pointer;
   transition: all 0.2s;
 }
-
 .player-name {
   background-color: #f9763d;
+  color: rgb(255, 255, 255);
 }
-
+.player-pic {
+  max-width: 250px;
+  height: 250px;
+  margin-top: -20px;
+}
+.player-position {
+  color: #cdd7e2;
+}
 .player-cards {
   padding: 2em 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, 275px);
   grid-gap: 1em;
   justify-content: center;
-}
-
-.player-pic {
-  max-width: 250px;
-  height: 250px;
-  margin-top: -20px;
-}
-
-.player-position {
-  color: white;
 }

@@ -1,57 +1,59 @@
-.player-page {
+player-page {
   background-color: #cdd7e2;
 }
-
+.player-name {
+  background-color: #f9763d;
+}
+.player-details-name {
+  background-color: #07173d;
+  color: #cdd7e2;
+  outline: 3px solid #f9763d;
+}
+.player-email {
+  background-color: #07173d;
+  color: #cdd7e2;
+  outline: 2px solid #f9763d;
+}
 .player-info {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 2fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
 }
-
+.blank {
+  color: #07173d00;
+}
 .player-grid {
   display: grid;
   grid-template-rows: 1fr 1fr;
 }
-
 .grid-top,
 .grid-bottom {
   border-left: 3pt solid;
 }
-
 h4,
 h2 {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: 15px;
 }
-
 .empty {
   margin: -10px;
 }
-
 .player-stats-and-pic {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
 
-.skills {
-  border-bottom: 3pt solid;
-  margin-left: 15px;
-}
-
+.skills-graph,
 .pic {
   justify-items: center;
   align-items: center;
-  border: 1px solid;
+  border: 15px solid #07173d;
+  outline: 3px solid #f9763d;
   height: 500px;
   width: 90%;
   margin-left: 15px;
   margin-top: -15px;
 }
-
 .fake {
   color: transparent;
-}
-
-.skills-graph {
-  margin-top: 150px;
 }

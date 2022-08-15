@@ -11,11 +11,13 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { GetSkillsByPlayerId } from '../services/Skills'
 import SkillChart from '../components/SkillChart'
+import { useNavigate } from 'react-router-dom'
 
 ChartJs.register(CategoryScale, LinearScale, BarElement)
 
 const PlayerDetails = ({ player }) => {
   let { playerId } = useParams()
+  let navigate = useNavigate()
 
   const [skills, setSkills] = useState(null)
   //   const [chartData, setChartData] = useState({ labels: '', datasets: '' })
@@ -150,7 +152,7 @@ const PlayerDetails = ({ player }) => {
         <div className="stat-graph">
           <h1 className="skills">Skills</h1>
           <div className="skills-graph">
-            <SkillChart chartData={chartData} />
+            {/* <SkillChart chartData={chartData} /> */}
           </div>
         </div>
         <div>
@@ -159,6 +161,13 @@ const PlayerDetails = ({ player }) => {
             <img className="pic" src={player.proPic}></img>
           </div>
         </div>
+        <button
+          onClick={() => {
+            navigate(`/newworkout/${playerId}`)
+          }}
+        >
+          Create a workout for {player.name}
+        </button>
       </div>
     </div>
   )

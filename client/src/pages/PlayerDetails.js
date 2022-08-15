@@ -7,7 +7,8 @@ import axios from 'axios'
 const PlayerDetails = ({ player }) => {
   let { playerId } = useParams()
 
-  let feetMath = (player.height / 12).toFixed(0)
+  let feet = player.height / 12
+  let feetMath = Math.floor(feet).toFixed(0)
   let inchMath = player.height % 12
 
   let secondaryPosAbr
@@ -63,7 +64,7 @@ const PlayerDetails = ({ player }) => {
           <div className="empty"></div>
           <div className="grid-bottom">
             <h4>Active</h4>
-            {player.isActive != true ? <h2>No</h2> : <h2>Yes</h2>}
+            {player.isActive !== true ? <h2>No</h2> : <h2>Yes</h2>}
           </div>
         </div>
         <div className="player-grid">

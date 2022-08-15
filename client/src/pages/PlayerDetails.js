@@ -42,30 +42,29 @@ const PlayerDetails = () => {
   useEffect(() => {
     const getSkills = async () => {
       const data = await GetSkillsByPlayerId(playerId)
-      setSkills(data)
+      setChartData({
+        labels: data.map((skill) => skill.skillName),
+        datasets: [
+          {
+            data: data.map((skill) => skill.skillLevel),
+
+            backgroundColor: [
+              '#f9763d',
+              '#f9763d',
+              '#f9763d',
+              '#f9763d',
+              '#f9763d',
+              '#f9763d'
+            ]
+          }
+        ]
+      })
       //   setChartToggle(true)
     }
     getSkills()
   }, [])
 
   const populateChart = (e) => {
-    setChartData({
-      labels: skills.map((skill) => skill.skillName),
-      datasets: [
-        {
-          data: skills.map((skill) => skill.skillLevel),
-
-          backgroundColor: [
-            '#f9763d',
-            '#f9763d',
-            '#f9763d',
-            '#f9763d',
-            '#f9763d',
-            '#f9763d'
-          ]
-        }
-      ]
-    })
     console.log(chartData)
   }
 
@@ -146,7 +145,7 @@ const PlayerDetails = () => {
         <div className="stat-graph">
           <h1 className="skills">Skills</h1>
           <div className="skills-graph">
-            {/* <SkillChart chartData={chartData} /> */}
+            <SkillChart chartData={chartData} />
           </div>
         </div>
         <div>

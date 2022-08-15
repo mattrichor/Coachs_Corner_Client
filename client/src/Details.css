@@ -52,3 +52,8 @@ h2 {
 .fake {
   color: transparent;
 }
+
+.workoutButton {
+  margin-left: 50%;
+  margin-top: -50%;
+}

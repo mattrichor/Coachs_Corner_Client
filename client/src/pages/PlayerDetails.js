@@ -165,6 +165,8 @@ const PlayerDetails = ({ player }) => {
             <img className="pic" src={player.proPic}></img>
           </div>
         </div>
+      </div>
+      <div className="workoutButton">
         <button
           onClick={() => {
             navigate(`/newworkout/${playerId}`)

@@ -15,7 +15,7 @@ import { useNavigate } from 'react-router-dom'
 
 ChartJs.register(CategoryScale, LinearScale, BarElement)
 
-const PlayerDetails = ({ player }) => {
+const PlayerDetails = () => {
   let { playerId } = useParams()
   let navigate = useNavigate()
 
@@ -24,15 +24,24 @@ const PlayerDetails = ({ player }) => {
   const [chartToggle, setChartToggle] = useState(false)
   const [datasets, setDatasets] = useState([])
   const [labels, setLabels] = useState([])
-  const [chartData, setChartData] = useState({})
+  const [chartData, setChartData] = useState({
+    labels: ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill6'],
+    datasets: [{ data: [1, 2, 3, 4, 5, 6] }]
+  })
+  const [player, setPlayer] = useState([])
 
   let labelArray = []
   let dataSetArray = []
 
   useEffect(() => {
+    const playerName = localStorage.getItem('player')
+    let selplayer = JSON.parse(playerName)
+    setPlayer(selplayer)
+  }, [])
+
+  useEffect(() => {
     const getSkills = async () => {
       const data = await GetSkillsByPlayerId(playerId)
-
       setChartData({
         labels: data.map((skill) => skill.skillName),
         datasets: [
@@ -48,36 +57,16 @@ const PlayerDetails = ({ player }) => {
               '#f9763d'
             ]
           }
-        ],
-        options: {
-          indexAxis: 'y'
-        }
+        ]
       })
-      console.log(chartData)
-      console.log(data)
       //   setChartToggle(true)
     }
     getSkills()
   }, [])
-  //   let chartData = { labels: labelArray, datasets: dataSetArray }
 
-  //   const populateChart = async (event) => {
-  //     event.preventDefault()
-  //     await skills.map((skill) => {
-  //       labelArray.push(skill.skillName)
-  //       dataSetArray.push(skill.skillLevel)
-  //       setLabels(skill.skillName)
-  //       setDatasets(skill.skillLevel)
-  //     })
-  //     console.log(labelArray)
-  //     console.log(dataSetArray)
-  //     console.log(chartData)
-  //   }
-
-  //   useEffect(() => {
-  //     populateChart()
-  //     console.log(chartToggle)
-  //   }, [chartToggle === true])
+  const populateChart = (e) => {
+    console.log(chartData)
+  }
 
   let feet = player.height / 12
   let feetMath = Math.floor(feet).toFixed(0)
@@ -165,7 +154,7 @@ const PlayerDetails = ({ player }) => {
         <div className="stat-graph">
           <h1 className="skills">Skills</h1>
           <div className="skills-graph">
-            {/* <SkillChart chartData={chartData} /> */}
+            <SkillChart chartData={chartData} />
           </div>
         </div>
         <div>

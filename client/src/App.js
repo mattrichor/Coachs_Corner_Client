@@ -35,6 +35,7 @@ function App() {
 
   const choosePlayer = (selected) => {
     setSelectedPlayer(selected)
+    localStorage.setItem('player', JSON.stringify(selected))
     navigate(`/players/${selected.id}`)
   }
 

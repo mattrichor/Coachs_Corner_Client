@@ -1,3 +1,7 @@
+.player-page {
+  background-color: rgb(102, 156, 182);
+}
+
 .player-info {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 2fr;
@@ -19,28 +23,39 @@ h2 {
   margin-bottom: 0px;
   margin-left: 15px;
 }
-
+.blank {
+  color: rgb(102, 156, 182, 0)
+}
 .empty {
   margin: -10px;
 }
 
 .player-stats-and-pic {
-  display: grid;
+  display: grid ;
   grid-template-columns: 1fr 1fr;
 }
 
 .skills {
   border-bottom: 3pt solid;
   margin-left: 15px;
+  position: left;
 }
 
 .skills-graph,
+
+.pic-container{
+  margin: 0px, 0px, 0px, -400px;
+  position: relative ;
+
+}
 .pic {
-  justify-items: center;
-  align-items: center;
+  /* justify-items: center;
+  align-items: center; */
   border: 1px solid;
   height: 500px;
-  width: 90%;
-  margin-left: 15px;
-  margin-top: -15px;
+  width: 500px;
+  margin: 200px, 40px, 40px, 1000px;
+  object-position: center right;
+  /* margin-left: 45px;
+  margin-top: -15px; */
 }

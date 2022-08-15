@@ -66,6 +66,7 @@ const PlayerDetails = ({ player }) => {
             {player.isActive != true ? <h2>No</h2> : <h2>Yes</h2>}
           </div>
         </div>
+
         <div className="player-grid">
           <div className="grid-top">
             <h4>Primary Position</h4>
@@ -83,8 +84,12 @@ const PlayerDetails = ({ player }) => {
           <h1 className="skills">Skills</h1>
           <div className="skills-graph"></div>
         </div>
-        <div className="pic-container">
-          <img className="pic" src={player.proPic}></img>
+        <div>
+          {" "}
+          <h1 className="blank"> Blank</h1>
+          <div className="pic-container">
+            <img className="pic" src={player.proPic}></img>
+          </div>
         </div>
       </div>
     </div>

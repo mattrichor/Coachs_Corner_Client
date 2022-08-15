@@ -10,13 +10,22 @@
 }
 
 .player-name {
-  background-color: #2c7bd2;
+  background-color: rgb(228, 150, 7);
+}
+.player-pic {
+  max-width: 250px;
+  height: 250px;
+  margin-top: -20px;
 }
 
+.player-position {
+  color: white;
+}
 .player-cards {
   padding: 2em 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, 275px);
   grid-gap: 1em;
   justify-content: center;
+  
 }

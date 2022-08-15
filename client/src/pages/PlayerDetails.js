@@ -153,8 +153,11 @@ const PlayerDetails = ({ player }) => {
             <SkillChart chartData={chartData} />
           </div>
         </div>
-        <div className="pic-container">
-          <img className="pic" src={player.proPic}></img>
+        <div>
+          <h1 className="skills fake">Skills</h1>
+          <div className="pic-container">
+            <img className="pic" src={player.proPic}></img>
+          </div>
         </div>
       </div>
     </div>

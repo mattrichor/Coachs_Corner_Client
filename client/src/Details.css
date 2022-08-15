@@ -44,3 +44,7 @@ h2 {
   margin-left: 15px;
   margin-top: -15px;
 }
+
+.fake {
+  color: transparent;
+}

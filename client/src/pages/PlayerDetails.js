@@ -19,19 +19,11 @@ const PlayerDetails = () => {
   let { playerId } = useParams()
   let navigate = useNavigate()
 
-  const [skills, setSkills] = useState(null)
-  //   const [chartData, setChartData] = useState({ labels: '', datasets: '' })
-  const [chartToggle, setChartToggle] = useState(false)
-  const [datasets, setDatasets] = useState([])
-  const [labels, setLabels] = useState([])
   const [chartData, setChartData] = useState({
     labels: ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill6'],
     datasets: [{ data: [1, 2, 3, 4, 5, 6] }]
   })
   const [player, setPlayer] = useState([])
-
-  let labelArray = []
-  let dataSetArray = []
 
   useEffect(() => {
     const playerName = localStorage.getItem('player')
@@ -101,7 +93,6 @@ const PlayerDetails = () => {
 
   return (
     <div className="player-page">
-      {/* <button onClick={(e) => populateChart(e)}>Populate Chart!</button> */}
       <h1 className="player-detail-name">{player.name}</h1>
       <h6 className="player-email">{player.email}</h6>
       <div className="player-info">

@@ -1,43 +1,45 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { RegisterCoach } from '../services/Auth'
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RegisterCoach } from "../services/Auth";
 
 const Register = () => {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
-    sport: '',
-    teamName: '',
-    password: '',
-    confirmPassword: ''
-  })
+    name: "",
+    email: "",
+    sport: "",
+    teamName: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
-  }
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     await RegisterCoach({
       name: formValues.name,
       email: formValues.email,
-      password: formValues.password
-    })
+      password: formValues.password,
+      teamName: formValues.teamName,
+      sport: formValues.sport,
+    });
     setFormValues({
-      name: '',
-      email: '',
-      sport: '',
-      teamName: '',
-      password: '',
-      confirmPassword: ''
-    })
+      name: "",
+      email: "",
+      sport: "",
+      teamName: "",
+      password: "",
+      confirmPassword: "",
+    });
     if (formValues.password !== formValues.confirmPassword) {
-      alert('Passwords do not match! Please try again!')
+      alert("Passwords do not match! Please try again!");
     } else {
-      navigate('/signin')
+      navigate("/signin");
     }
-  }
+  };
   return (
     <div className="signin col">
       <div className="card-overlay centered">
@@ -118,7 +120,7 @@ const Register = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

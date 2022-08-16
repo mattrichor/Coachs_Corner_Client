@@ -22,7 +22,9 @@ const Register = () => {
     await RegisterCoach({
       name: formValues.name,
       email: formValues.email,
-      password: formValues.password
+      password: formValues.password,
+      teamName: formValues.teamName,
+      sport: formValues.sport
     })
     setFormValues({
       name: '',

@@ -1,15 +1,4 @@
 /* #CDD7E2; grey/blue, #07173D; navy blue, #F9763D; orange, #2C7BD2 light blue*/
-.signin-col{
-    margin-top: 40px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    width: 300px;
-    background-color: #dee1e5;
-    border: 3px solid black;
-    border-radius: 20px;
-}
 .signin-col-ch{
     margin-top: 40px;
     margin-bottom: 0;
@@ -21,7 +10,6 @@
     border: 3px solid black;
     border-radius: 20px;
 }
-
 .input-wrapper{
     margin-bottom: 2px;
 }

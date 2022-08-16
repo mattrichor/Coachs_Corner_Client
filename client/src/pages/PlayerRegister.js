@@ -162,7 +162,7 @@ const Register = () => {
               required
             />
           </div>
-          <div className="input-wrapper">
+          <div className="input-wrapper-last">
             <label htmlFor="confirmPassword">Confirm Password: </label>
             <input
               onChange={handleChange}

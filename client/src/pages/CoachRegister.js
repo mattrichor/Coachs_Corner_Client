@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { RegisterCoach } from "../services/Auth";
-
+import "../register.css";
 const Register = () => {
   let navigate = useNavigate();
   const [formValues, setFormValues] = useState({
@@ -41,11 +41,12 @@ const Register = () => {
     }
   };
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
+    <div className="signin-col-ch">
+      <div className="card-overlay-centered-ch">
+        <h1>Please Register Here:</h1>
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="name">Full Name:</label>
+            <label htmlFor="name">Full Name: </label>
             <input
               onChange={handleChange}
               name="name"
@@ -56,7 +57,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email: </label>
             <input
               onChange={handleChange}
               name="email"
@@ -78,7 +79,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="teamName">Team Name:</label>
+            <label htmlFor="teamName">Team Name: </label>
             <input
               onChange={handleChange}
               name="teamName"
@@ -89,7 +90,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password: </label>
             <input
               onChange={handleChange}
               type="password"
@@ -99,7 +100,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <label htmlFor="confirmPassword">Confirm Password: </label>
             <input
               onChange={handleChange}
               type="password"

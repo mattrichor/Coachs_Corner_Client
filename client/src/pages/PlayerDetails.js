@@ -39,7 +39,7 @@ const PlayerDetails = () => {
         datasets: [
           {
             data: data.map((skill) => skill.skillLevel),
-
+            responsive: true,
             backgroundColor: [
               '#f9763d',
               '#f9763d',
@@ -47,18 +47,25 @@ const PlayerDetails = () => {
               '#f9763d',
               '#f9763d',
               '#f9763d'
-            ]
+            ],
+            borderColor: [
+              '#F9763D',
+              '#F9763D',
+              '#F9763D',
+              '#F9763D',
+              '#F9763D',
+              '#F9763D'
+            ],
+            borderWidth: 1,
+            borderSkipped: false,
+            borderRadius: 5
           }
         ]
       })
       //   setChartToggle(true)
     }
     getSkills()
-  }, [])
-
-  const populateChart = (e) => {
-    console.log(chartData)
-  }
+  }, [player])
 
   let feet = player.height / 12
   let feetMath = Math.floor(feet).toFixed(0)

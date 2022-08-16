@@ -1,39 +1,39 @@
-import '../Details.css'
-import { Bar } from 'react-chartjs-2'
+import "../Details.css";
+import { Bar } from "react-chartjs-2";
 import {
   Chart as ChartJs,
   CategoryScale,
   LinearScale,
-  BarElement
-} from 'chart.js'
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import axios from 'axios'
-import { GetSkillsByPlayerId } from '../services/Skills'
-import SkillChart from '../components/SkillChart'
-import { useNavigate } from 'react-router-dom'
+  BarElement,
+} from "chart.js";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
+import { GetSkillsByPlayerId } from "../services/Skills";
+import SkillChart from "../components/SkillChart";
+import { useNavigate } from "react-router-dom";
 
-ChartJs.register(CategoryScale, LinearScale, BarElement)
+ChartJs.register(CategoryScale, LinearScale, BarElement);
 
 const PlayerDetails = () => {
-  let { playerId } = useParams()
-  let navigate = useNavigate()
+  let { playerId } = useParams();
+  let navigate = useNavigate();
 
   const [chartData, setChartData] = useState({
-    labels: ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill6'],
-    datasets: [{ data: [1, 2, 3, 4, 5, 6] }]
-  })
-  const [player, setPlayer] = useState([])
+    labels: ["skill1", "skill2", "skill3", "skill4", "skill5", "skill6"],
+    datasets: [{ data: [1, 2, 3, 4, 5, 6] }],
+  });
+  const [player, setPlayer] = useState([]);
 
   useEffect(() => {
-    const playerName = localStorage.getItem('player')
-    let selplayer = JSON.parse(playerName)
-    setPlayer(selplayer)
-  }, [])
+    const playerName = localStorage.getItem("player");
+    let selplayer = JSON.parse(playerName);
+    setPlayer(selplayer);
+  }, []);
 
   useEffect(() => {
     const getSkills = async () => {
-      const data = await GetSkillsByPlayerId(playerId)
+      const data = await GetSkillsByPlayerId(playerId);
       setChartData({
         labels: data.map((skill) => skill.skillName),
         datasets: [
@@ -67,35 +67,35 @@ const PlayerDetails = () => {
     getSkills()
   }, [player])
 
-  let feet = player.height / 12
-  let feetMath = Math.floor(feet).toFixed(0)
-  let inchMath = player.height % 12
+  let feet = player.height / 12;
+  let feetMath = Math.floor(feet).toFixed(0);
+  let inchMath = player.height % 12;
 
-  let secondaryPosAbr
+  let secondaryPosAbr;
   switch (player.secondaryPosition) {
-    case 'Pitcher':
-      secondaryPosAbr = 'Pitcher'
-      break
-    case 'Catcher':
-      secondaryPosAbr = 'Catcher'
-      break
-    case 'First Baseman':
-      secondaryPosAbr = '1B'
-      break
-    case 'Second Baseman':
-      secondaryPosAbr = '2B'
-      break
-    case 'Third Baseman':
-      secondaryPosAbr = '3B'
-      break
-    case 'Short Stop':
-      secondaryPosAbr = 'SS'
-      break
-    case 'Center Fielder':
-      secondaryPosAbr = 'CF'
-      break
-    case 'Right Fielder':
-      secondaryPosAbr = 'RF'
+    case "Pitcher":
+      secondaryPosAbr = "Pitcher";
+      break;
+    case "Catcher":
+      secondaryPosAbr = "Catcher";
+      break;
+    case "First Baseman":
+      secondaryPosAbr = "1B";
+      break;
+    case "Second Baseman":
+      secondaryPosAbr = "2B";
+      break;
+    case "Third Baseman":
+      secondaryPosAbr = "3B";
+      break;
+    case "Short Stop":
+      secondaryPosAbr = "SS";
+      break;
+    case "Center Fielder":
+      secondaryPosAbr = "CF";
+      break;
+    case "Right Fielder":
+      secondaryPosAbr = "RF";
   }
 
   return (
@@ -141,7 +141,7 @@ const PlayerDetails = () => {
         <div className="workoutButton">
           <button
             onClick={() => {
-              navigate(`/newworkout/${playerId}`)
+              navigate(`/newworkout/${playerId}`);
             }}
           >
             Create a workout for {player.name}
@@ -163,7 +163,7 @@ const PlayerDetails = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default PlayerDetails
+export default PlayerDetails;

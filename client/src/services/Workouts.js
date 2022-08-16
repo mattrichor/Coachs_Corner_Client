@@ -18,9 +18,9 @@ export const allWorkouts = async () => {
   }
 }
 
-export const handleSubmit = async (playerId) => {
+export const handleSubmit = async (playerId, data) => {
   try {
-    const res = await Client.post(`/workout/${playerId}`)
+    const res = await Client.post(`/workout/${playerId}`, data)
     return res.data
   } catch (error) {
     throw error

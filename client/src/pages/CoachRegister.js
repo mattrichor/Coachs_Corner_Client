@@ -1,51 +1,53 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { RegisterCoach } from '../services/Auth'
-
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { RegisterCoach } from "../services/Auth";
+import "../register.css";
 const Register = () => {
-  let navigate = useNavigate()
+  let navigate = useNavigate();
   const [formValues, setFormValues] = useState({
-    name: '',
-    email: '',
-    sport: '',
-    teamName: '',
-    password: '',
-    confirmPassword: ''
-  })
+    name: "",
+    email: "",
+    sport: "",
+    teamName: "",
+    password: "",
+    confirmPassword: "",
+  });
 
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
-  }
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     await RegisterCoach({
       name: formValues.name,
       email: formValues.email,
       password: formValues.password,
       teamName: formValues.teamName,
+
       sport: formValues.sport
     })
     setFormValues({
-      name: '',
-      email: '',
-      sport: '',
-      teamName: '',
-      password: '',
-      confirmPassword: ''
-    })
+      name: "",
+      email: "",
+      sport: "",
+      teamName: "",
+      password: "",
+      confirmPassword: "",
+    });
     if (formValues.password !== formValues.confirmPassword) {
-      alert('Passwords do not match! Please try again!')
+      alert("Passwords do not match! Please try again!");
     } else {
-      navigate('/signin')
+      navigate("/signin");
     }
-  }
+  };
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
+    <div className="signin-col-ch">
+      <div className="card-overlay-centered-ch">
+        <h1>Please Register Here:</h1>
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="name">Full Name:</label>
+            <label htmlFor="name">Full Name: </label>
             <input
               onChange={handleChange}
               name="name"
@@ -56,7 +58,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">Email: </label>
             <input
               onChange={handleChange}
               name="email"
@@ -78,7 +80,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="teamName">Team Name:</label>
+            <label htmlFor="teamName">Team Name: </label>
             <input
               onChange={handleChange}
               name="teamName"
@@ -89,7 +91,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">Password: </label>
             <input
               onChange={handleChange}
               type="password"
@@ -99,7 +101,7 @@ const Register = () => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="confirmPassword">Confirm Password:</label>
+            <label htmlFor="confirmPassword">Confirm Password: </label>
             <input
               onChange={handleChange}
               type="password"
@@ -120,7 +122,7 @@ const Register = () => {
         </form>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Register
+export default Register;

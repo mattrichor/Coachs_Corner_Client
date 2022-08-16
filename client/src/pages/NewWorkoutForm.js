@@ -6,28 +6,31 @@ import {
   handleDelete,
   handleUpdate
 } from '../services/Workouts'
+import { GetSkillsByPlayerId } from '../services/Skills'
 import { useParams } from 'react-router-dom'
 
 const NewWorkoutForm = () => {
-  const [playerWorkouts, setPlayerWorkouts] = useState([])
-  const [newWorkout, setNewWorkout] = useState([])
-  const [workouts, setAllWorkouts] = useState([])
-  const initialState = {
-    title: '',
-    description: '',
-    completionDate: '',
-    skillIncrease: ''
-  }
   let { playerId } = useParams()
   const [player, setPlayer] = useState([])
+  const [playerWorkouts, setPlayerWorkouts] = useState([])
+  const [workouts, setAllWorkouts] = useState([])
+  const [skills, setAllSkills] = useState([])
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [completionDate, setCompletionDate] = useState('')
+  const [skillIncrease, setSkillIncrease] = useState(0)
+  //   const [formValues, setFormValues] = useState({
+  //     title: '',
+  //     description: '',
+  //     completionDate: '',
+  //     skillIncrease: ''
+  //   })
 
   useEffect(() => {
     const playerName = localStorage.getItem('player')
     let selplayer = JSON.parse(playerName)
     setPlayer(selplayer)
   }, [])
-
-  const [formState, setFormState] = useState(initialState)
   const [submitted, setSubmitted] = useState(true)
 
   useEffect(() => {
@@ -47,17 +50,33 @@ const NewWorkoutForm = () => {
     getAllWorkouts()
   }, [])
 
-  const handleChange = (event) => {
-    setFormState({ ...formState, [event.target.id]: event.target.value })
-  }
+  useEffect(() => {
+    const getAllSkills = async () => {
+      const data = await GetSkillsByPlayerId(playerId)
+      setAllSkills(data)
+    }
+    getAllSkills()
+  }, [player])
 
-  const submitHandle = async (event) => {
-    event.preventDefault()
-    const data = await handleSubmit()
-    console.log(data)
-    setFormState(initialState)
-    setSubmitted(true)
-    event.target.reset()
+  //   const handleChange = (e) => {
+  //     setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  //   }
+
+  const submitHandle = async (e) => {
+    e.preventDefault()
+    await handleSubmit(playerId, {
+      title,
+      description,
+      completionDate,
+      skillIncrease,
+      playerId
+    })
+    // setFormValues({
+    //   title: '',
+    //   description: '',
+    //   completionDate: '',
+    //   skillIncrease: ''
+    // })
   }
 
   const deleteHandle = async () => {
@@ -89,12 +108,66 @@ const NewWorkoutForm = () => {
           Choose a new workout from the drop down below, or add in your own with
           the form!
         </h1>
-        <select>
-          <option value="nothing"></option>
-          {workouts.map((workout) => (
-            <option value="allWorkouts">{workout.title}</option>
-          ))}
-        </select>
+        <div>
+          Existing Workouts:
+          <form onSubmit={submitHandle}>
+            <select>
+              <option value="nothing"></option>
+              {workouts.map((workout) => (
+                <option value="allWorkouts">{workout.title}</option>
+              ))}
+            </select>
+            {''}
+
+            <label htmlFor="title">Title: </label>
+            <input
+              onChange={(e) => setTitle(e.target.value)}
+              type="text"
+              id="title"
+              placeholder="Title"
+              value={title}
+              required
+            />
+            <label htmlFor="description">Description: </label>
+            <input
+              onChange={(e) => setDescription(e.target.value)}
+              type="text"
+              id="description"
+              placeholder="Description"
+              value={description}
+              required
+            />
+            <label htmlFor="completeBy">Complete Workout By: </label>
+            <input
+              onChange={(e) => setCompletionDate(e.target.value)}
+              type="date"
+              id="completeBy"
+              placeholder=""
+              value={completionDate}
+              required
+            />
+            <div>
+              {' '}
+              Select Skills:
+              <select>
+                <option value="nothing"></option>
+                {skills.map((skill) => (
+                  <option value="allSkills">{skill.skillName}</option>
+                ))}{' '}
+              </select>
+            </div>
+            <label htmlFor="skillIncrease">Skill Increase: </label>
+            <input
+              onChange={(e) => setSkillIncrease(e.target.value)}
+              type="number"
+              id="skillIncrease"
+              placeholder="Skill (Number)"
+              value={skillIncrease}
+              required
+            />
+            <button type="submit">Send</button>
+          </form>
+        </div>
       </div>
     </div>
   )

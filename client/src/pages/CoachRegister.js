@@ -24,8 +24,9 @@ const Register = () => {
       email: formValues.email,
       password: formValues.password,
       teamName: formValues.teamName,
-      sport: formValues.sport,
-    });
+
+      sport: formValues.sport
+    })
     setFormValues({
       name: "",
       email: "",

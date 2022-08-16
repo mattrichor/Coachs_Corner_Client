@@ -16,20 +16,37 @@ ChartJs.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
 const SkillChart = ({ chartData }) => {
   return (
-    <div className="chart">
-      {chartData !== {} ? (
-        <Bar
-          data={chartData}
-          options={{
-            maintainAspectRatio: false,
-            indexAxis: 'y',
-            scales: {}
-          }}
-        />
-      ) : (
-        <span>Loading Chart, Please Wait...</span>
-      )}
-    </div>
+    <Bar
+      data={chartData}
+      options={{
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          x: {
+            beginAtZero: true,
+            grid: {
+              display: true,
+              drawBorder: false
+            },
+            ticks: { display: false }
+          },
+          y: {
+            grid: {
+              display: false,
+              drawBorder: false
+            },
+            ticks: { display: true }
+          }
+        },
+        barThickness: 30,
+        responsive: true
+      }}
+    />
   )
 }
 

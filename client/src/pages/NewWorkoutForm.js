@@ -19,6 +19,7 @@ const NewWorkoutForm = () => {
   const [description, setDescription] = useState('')
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
+  const [playerWorkoutSkill, setPlayerWorkoutSkill] = useState('')
   //   const [formValues, setFormValues] = useState({
   //     title: '',
   //     description: '',
@@ -99,7 +100,9 @@ const NewWorkoutForm = () => {
             <h3>Title: {workout.title}</h3>
             <p>Description: {workout.description}</p>
             <p>Complete Workout by: {workout.completionDate}</p>
-            <p>This workout will increase skill by: {workout.skillIncrease}</p>
+            <p>
+              This workout will increase {} skill by: {workout.skillIncrease}
+            </p>
           </div>
         ))}
       </div>

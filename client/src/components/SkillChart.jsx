@@ -18,8 +18,10 @@ const SkillChart = ({ chartData }) => {
   return (
     <Bar
       data={chartData}
+      redraw={true}
       options={{
         maintainAspectRatio: false,
+
         indexAxis: 'y',
         plugins: {
           legend: {

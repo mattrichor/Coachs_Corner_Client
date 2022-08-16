@@ -19,19 +19,12 @@ const NewWorkoutForm = () => {
   const [description, setDescription] = useState('')
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
-  //   const [formValues, setFormValues] = useState({
-  //     title: '',
-  //     description: '',
-  //     completionDate: '',
-  //     skillIncrease: ''
-  //   })
 
   useEffect(() => {
     const playerName = localStorage.getItem('player')
     let selplayer = JSON.parse(playerName)
     setPlayer(selplayer)
   }, [])
-  const [submitted, setSubmitted] = useState(true)
 
   useEffect(() => {
     const handleWorkouts = async () => {
@@ -58,10 +51,6 @@ const NewWorkoutForm = () => {
     getAllSkills()
   }, [player])
 
-  //   const handleChange = (e) => {
-  //     setFormValues({ ...formValues, [e.target.name]: e.target.value })
-  //   }
-
   const submitHandle = async (e) => {
     e.preventDefault()
     await handleSubmit(playerId, {
@@ -71,23 +60,26 @@ const NewWorkoutForm = () => {
       skillIncrease,
       playerId
     })
-    // setFormValues({
-    //   title: '',
-    //   description: '',
-    //   completionDate: '',
-    //   skillIncrease: ''
-    // })
   }
 
-  const deleteHandle = async () => {
-    const data = await handleDelete().catch((error) => console.log(error))
+  const deleteHandle = async (workoutId) => {
+    const data = await handleDelete(workoutId).catch((error) =>
+      console.log(error)
+    )
     console.log(data)
   }
 
-  const updateHandle = async () => {
-    const data = await handleUpdate()
+  const updateHandle = async (workoutId) => {
+    const data = await handleUpdate(workoutId)
       .then((data) => console.log(data.status))
       .catch((error) => console.log(error))
+  }
+
+  const updateWorkoutDelete = async (item) => {
+    let index = playerWorkouts.indexOf(item)
+    let temp = [...playerWorkouts]
+    temp.splice(index, 1)
+    setPlayerWorkouts(temp)
   }
 
   return (
@@ -100,6 +92,35 @@ const NewWorkoutForm = () => {
             <p>Description: {workout.description}</p>
             <p>Complete Workout by: {workout.completionDate}</p>
             <p>This workout will increase skill by: {workout.skillIncrease}</p>
+            <button
+              className="collectionButton"
+              onClick={() => {
+                const answer = window.confirm(
+                  `Are you sure you want to complete this workout for ${player.name} `
+                )
+                if (answer) {
+                  deleteHandle(workout.id)
+                  updateWorkoutDelete(workout)
+                } else {
+                  return
+                }
+              }}
+            >
+              Delete
+            </button>
+            <button
+              onClick={() => {
+                updateHandle(
+                  workout.id,
+                  title,
+                  description,
+                  completionDate,
+                  skillIncrease
+                )
+              }}
+            >
+              Update
+            </button>
           </div>
         ))}
       </div>

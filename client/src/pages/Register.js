@@ -4,22 +4,24 @@ const Register = () => {
   let navigate = useNavigate();
 
   return (
-    <div>
-      <h1 class>Are you a Coach? Yes or No?</h1>
-      <button
-        onClick={() => {
-          navigate("./coach");
-        }}
-      >
-        Yes
-      </button>
-      <button
-        onClick={() => {
-          navigate("./player");
-        }}
-      >
-        No
-      </button>
+    <div className="register-background">
+      <h1 className="coach-q">Are you a Coach?</h1>
+      <div className="bl-ch-div">
+        <button
+          onClick={() => {
+            navigate("./coach");
+          }}
+        >
+          Yes
+        </button>
+        <button
+          onClick={() => {
+            navigate("./player");
+          }}
+        >
+          No
+        </button>
+      </div>
     </div>
   );
 };

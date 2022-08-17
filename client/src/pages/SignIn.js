@@ -34,9 +34,12 @@ const SignIn = (props) => {
     } else if (loginToggle === true) {
       const payload = await SignInPlayer(formValues)
       setFormValues({ email: '', password: '' })
+      const player = JSON.parse(localStorage.getItem('player'))
       props.setCoach(payload)
       props.toggleAuthenticated(true)
-      navigate('/coachfeed')
+      player.data.map((player) => {
+        navigate(`/players/${player.id}`)
+      })
     }
   }
 

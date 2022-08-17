@@ -13,8 +13,10 @@ export const SignInCoach = async (data) => {
 export const SignInPlayer = async (data) => {
   try {
     const res = await Client.post('/auth/login/player', data)
-    // Set the current signed in users token to localStorage
     localStorage.setItem('token', res.data.token)
+    const player = await Client.get(`/players/logging_in/${data.email}`)
+    // Set the current signed in users token to localStorage
+    localStorage.setItem('player', JSON.stringify(player))
     return res.data.coach
   } catch (error) {
     throw error

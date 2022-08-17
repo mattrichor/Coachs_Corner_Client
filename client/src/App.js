@@ -19,6 +19,7 @@ function App() {
   const [coach, setCoach] = useState(null)
   const [allPlayers, setAllPlayers] = useState([])
   const [selectedPlayer, setSelectedPlayer] = useState(null)
+  const [selectedPlayerId, setSelectedPlayerId] = useState(null)
   let navigate = useNavigate()
 
   const handleLogOut = () => {
@@ -35,6 +36,8 @@ function App() {
 
   const choosePlayer = (selected) => {
     setSelectedPlayer(selected)
+    setSelectedPlayerId(selected.id)
+    console.log(selected)
     localStorage.setItem('player', JSON.stringify(selected))
     navigate(`/players/${selected.id}`)
   }
@@ -75,6 +78,8 @@ function App() {
               <SignIn
                 setCoach={setCoach}
                 toggleAuthenticated={toggleAuthenticated}
+                choosePlayer={choosePlayer}
+                selectedPlayer={selectedPlayer}
               />
             }
           />

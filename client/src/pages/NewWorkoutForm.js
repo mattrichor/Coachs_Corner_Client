@@ -3,15 +3,16 @@ import {
   getWorkouts,
   allWorkouts,
   handleSubmit,
-  handleDelete,
   handleUpdate
 } from '../services/Workouts'
 
 import { MarkComplete } from '../services/Skills'
 import { GetSkillsByPlayerId } from '../services/Skills'
 import { useParams } from 'react-router-dom'
+import WorkoutCard from '../components/WorkoutCard'
+import WorkoutForm from '../components/WorkoutForm'
 
-const NewWorkoutForm = () => {
+const Workout = () => {
   let { playerId } = useParams()
   const [player, setPlayer] = useState([])
   const [playerWorkouts, setPlayerWorkouts] = useState([])
@@ -70,13 +71,6 @@ const NewWorkoutForm = () => {
     })
   }
 
-  const deleteHandle = async (workoutId) => {
-    const data = await handleDelete(workoutId).catch((error) =>
-      console.log(error)
-    )
-    console.log(data)
-  }
-
   const completeWorkout = async (playerId, workoutId) => {
     const data = await MarkComplete(playerId, workoutId).catch((error) =>
       console.log(error)
@@ -115,50 +109,26 @@ const NewWorkoutForm = () => {
       <h1>Assign a new workout for {player.name}!</h1>
       <div>
         {playerWorkouts.map((workout) => (
-          <div key={workout.id}>
-            <h3>Title: {workout.title}</h3>
-            <p>Description: {workout.description}</p>
-            <p>Complete Workout by: {workout.completionDate}</p>
-            <p>
-              This workout will increase {skillName} skill by:
-              {workout.skillIncrease}
-            </p>
-            <button
-              className="collectionButton"
-              onClick={() => {
-                const answer = window.confirm(
-                  `Are you sure you want to delete this workout for ${player.name} `
-                )
-                if (answer) {
-                  deleteHandle(workout.id)
-                  updateWorkoutDelete(workout)
-                } else {
-                  return
-                }
-              }}
-            >
-              Delete
-            </button>
-            <button
-              onClick={() => {
-                updateHandle(
-                  workout.id,
-                  title,
-                  description,
-                  completionDate,
-                  skillIncrease
-                )
-              }}
-            >
-              Update
-            </button>
-            <button
-              className="completion"
-              onClick={() => completeWorkout(playerId, workout.id)}
-            >
-              Mark As Complete
-            </button>
-          </div>
+
+          <WorkoutCard
+            key={workout.id}
+            id={workout.id}
+            title={workout.title}
+            description={workout.description}
+            completionDate={workout.completionDate}
+            skillIncrease={workout.skillIncrease}
+            name={player.name}
+            playerId={playerId}
+            titles={title}
+            descriptions={description}
+            completionDates={completionDate}
+            skillIncreases={skillIncrease}
+            // skillName={skill.skillName}
+            updateWorkoutDelete={updateWorkoutDelete}
+            updateHandle={updateHandle}
+            completeWorkout={completeWorkout}
+          />
+
         ))}
       </div>
       <div>
@@ -166,6 +136,9 @@ const NewWorkoutForm = () => {
           Choose a new workout from the drop down below, or add in your own with
           the form!
         </h1>
+        <div>
+          <WorkoutForm submitHandle={submitHandle} />
+        </div>
         <div>
           Existing Workouts:
           <form onSubmit={submitHandle}>
@@ -237,4 +210,4 @@ const NewWorkoutForm = () => {
   )
 }
 
-export default NewWorkoutForm
+export default Workout

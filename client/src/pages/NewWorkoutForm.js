@@ -7,7 +7,7 @@ import {
 } from '../services/Workouts'
 
 import { MarkComplete } from '../services/Skills'
-import { GetSkillsByPlayerId } from '../services/Skills'
+import { GetSkillsByPlayerId, GetSkillNames } from '../services/Skills'
 import { useParams } from 'react-router-dom'
 import WorkoutCard from '../components/WorkoutCard'
 import WorkoutForm from '../components/WorkoutForm'
@@ -59,6 +59,14 @@ const Workout = () => {
     getAllSkills()
   }, [player])
 
+  // useEffect(() => {
+  //   const GetAllSkillNames = async (skillId) => {
+  //     const data = await GetSkillNames(skillId)
+  //     setSkillName(data)
+  //   }
+  //   GetAllSkillNames()
+  // }, [])
+
   const submitHandle = async (e) => {
     e.preventDefault()
     await handleSubmit(playerId, {
@@ -109,7 +117,6 @@ const Workout = () => {
       <h1>Assign a new workout for {player.name}!</h1>
       <div>
         {playerWorkouts.map((workout) => (
-
           <WorkoutCard
             key={workout.id}
             id={workout.id}
@@ -123,12 +130,11 @@ const Workout = () => {
             descriptions={description}
             completionDates={completionDate}
             skillIncreases={skillIncrease}
-            // skillName={skill.skillName}
+            // skillName={skillName}
             updateWorkoutDelete={updateWorkoutDelete}
             updateHandle={updateHandle}
             completeWorkout={completeWorkout}
           />
-
         ))}
       </div>
       <div>
@@ -186,7 +192,7 @@ const Workout = () => {
                 {skills.map((skill) => (
                   <option
                     value={skill.id}
-                    onChangeCapture={() => setSkillName(skill.skillName)}
+                    // onChange={() => setSkillName(skill.skillName)}
                   >
                     {skill.skillName}
                   </option>

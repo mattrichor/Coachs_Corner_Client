@@ -3,7 +3,7 @@ import React from 'react'
 const WorkoutForm = () => {
   return (
     <div>
-      Existing Workouts:
+      {/* Existing Workouts: */}
       {/* <form onSubmit={submitHandle}>
         <select>
           <option value="nothing"></option>

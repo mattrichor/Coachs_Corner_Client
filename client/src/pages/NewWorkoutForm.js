@@ -211,12 +211,7 @@ const NewWorkoutForm = () => {
               >
                 <option value="nothing"></option>
                 {skills.map((skill) => (
-                  <option
-                    value={skill.id}
-                    onChangeCapture={() => setSkillName(skill.skillName)}
-                  >
-                    {skill.skillName}
-                  </option>
+                  <option value={skill.id}>{skill.skillName}</option>
                 ))}
               </select>
             </div>

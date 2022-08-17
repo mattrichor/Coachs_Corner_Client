@@ -159,7 +159,11 @@ const PlayerDetails = () => {
         <div>
           <h1 className="skills fake">Skills</h1>
           <div className="pic-container">
-            <img className="pic" src={player.proPic}></img>
+            {player.proPic !== null ? (
+              <img className="pic" src={player.proPic}></img>
+            ) : (
+              <img className="pic"></img>
+            )}
           </div>
         </div>
       </div>

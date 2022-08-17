@@ -1,4 +1,6 @@
+
 import '../SignIn.css'
+import '../Feed.css'
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
@@ -11,8 +13,8 @@ const SignIn = (props) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' })
   const [loginToggle, setLoginToggle] = useState(false)
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
-  }
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
   const toggleLogin = () => {
     if (loginToggle === false) {
@@ -25,6 +27,7 @@ const SignIn = (props) => {
   }
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
     if (loginToggle === false) {
       const payload = await SignInCoach(formValues)
@@ -45,6 +48,7 @@ const SignIn = (props) => {
   }
 
   return (
+   <div className="bg-sign-in">
     <div className="signin-col-ch">
       <div className="card-overlay-centered-ch">
         <h1>Your Team Awaits Orders!</h1>
@@ -87,9 +91,11 @@ const SignIn = (props) => {
             Register Here!
           </button>
         </form>
+        </div>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

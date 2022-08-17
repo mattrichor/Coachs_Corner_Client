@@ -1,3 +1,30 @@
+
+/* #CDD7E2; grey/blue, #07173D; navy blue, #F9763D; orange, #2C7BD2 light blue*/
+.bg-sign-in{
+    background-image: url(https://cdn.gtgrandstands.com/images/uploads/projects/McKechnie_EntryImage.jpg)
+    ;
+    background-size: cover;
+    height: 1000px;
+    margin-top: -40px;
+}
+.input-wrapper-2{
+    margin-bottom: 5px;
+}
+.h2-signIn{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.signin-col-SI{
+    margin-top: 40px;
+    margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    height: 280px;
+    width: 300px;
+    background-color: #dee1e5;
+    border: 3px solid black;
+    border-radius: 20px;
+
 .login-toggle {
   position: relative;
   display: inline-block;

@@ -1,18 +1,20 @@
-import { useNavigate } from 'react-router-dom'
-
+import { useNavigate } from "react-router-dom";
+import "../Home.css";
 const Home = () => {
-  let navigate = useNavigate()
-
+  let navigate = useNavigate();
+  // document.body.className = "home";
   return (
-    <div>
-      <h1>Welcome! Please click below to get started!</h1>
+    <div className="home">
+      <h1 className="homeH1">Welcome to Coach's Corner!</h1>
+      <h1 className="homeH2">A Gamified Approach to Coaching Athletes</h1>
       <section>
-        <button onClick={() => navigate('/signin')}>
+        {/* <img src="https://pixy.org/src/486/4860311.jpg" className="bats"></img> */}
+        <button className="homeButton" onClick={() => navigate("/signin")}>
           Click Here To Get Started
         </button>
       </section>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

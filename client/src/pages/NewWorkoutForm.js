@@ -23,6 +23,7 @@ const Workout = () => {
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
   const [skillId, setSkillId] = useState(0)
+  const [skillName, setSkillName] = useState('')
 
   const [updateToggle, setUpdateToggle] = useState(false)
 
@@ -108,6 +109,7 @@ const Workout = () => {
       <h1>Assign a new workout for {player.name}!</h1>
       <div>
         {playerWorkouts.map((workout) => (
+
           <WorkoutCard
             key={workout.id}
             id={workout.id}
@@ -126,6 +128,7 @@ const Workout = () => {
             updateHandle={updateHandle}
             completeWorkout={completeWorkout}
           />
+
         ))}
       </div>
       <div>
@@ -174,7 +177,6 @@ const Workout = () => {
               required
             />
             <div>
-              {' '}
               Select Skills:
               <select
                 value={skillId}
@@ -182,7 +184,12 @@ const Workout = () => {
               >
                 <option value="nothing"></option>
                 {skills.map((skill) => (
-                  <option value={skill.id}>{skill.skillName}</option>
+                  <option
+                    value={skill.id}
+                    onChangeCapture={() => setSkillName(skill.skillName)}
+                  >
+                    {skill.skillName}
+                  </option>
                 ))}
               </select>
             </div>

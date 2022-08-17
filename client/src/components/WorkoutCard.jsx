@@ -8,13 +8,15 @@ const WorkoutCard = (props) => {
     )
     console.log(data)
   }
-
+  console.log(props.skillName)
   return (
     <div>
       <h3>Title: {props.title}</h3>
       <p>Description: {props.description}</p>
       <p>Complete workout by: {props.completionDate}</p>
-      <p>This workout will increase skill by: {props.skillIncrease}</p>
+      <p>
+        This workout will increase {props.skillName} by: {props.skillIncrease}
+      </p>
       <button
         className="collectionButton"
         onClick={() => {

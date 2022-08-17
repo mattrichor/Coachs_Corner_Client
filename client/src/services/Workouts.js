@@ -44,13 +44,12 @@ export const handleUpdate = async (
   skillIncrease
 ) => {
   try {
-    const res = await Client.put(
-      `/workout/${playerId}`,
+    const res = await Client.put(`/workout/${playerId}`, {
       title,
       description,
       completionDate,
       skillIncrease
-    )
+    })
     return res.data
   } catch (error) {
     throw error

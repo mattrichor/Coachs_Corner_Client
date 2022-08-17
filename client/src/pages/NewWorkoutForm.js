@@ -6,6 +6,8 @@ import {
   handleDelete,
   handleUpdate
 } from '../services/Workouts'
+
+import { MarkComplete } from '../services/Skills'
 import { GetSkillsByPlayerId } from '../services/Skills'
 import { useParams } from 'react-router-dom'
 
@@ -67,6 +69,13 @@ const NewWorkoutForm = () => {
 
   const deleteHandle = async (workoutId) => {
     const data = await handleDelete(workoutId).catch((error) =>
+      console.log(error)
+    )
+    console.log(data)
+  }
+
+  const completeWorkout = async (playerId, workoutId) => {
+    const data = await MarkComplete(playerId, workoutId).catch((error) =>
       console.log(error)
     )
     console.log(data)
@@ -136,6 +145,12 @@ const NewWorkoutForm = () => {
               }}
             >
               Update
+            </button>
+            <button
+              className="completion"
+              onClick={() => completeWorkout(playerId, workout.id)}
+            >
+              Mark As Complete
             </button>
           </div>
         ))}

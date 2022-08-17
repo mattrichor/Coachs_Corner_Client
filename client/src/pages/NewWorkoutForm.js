@@ -21,6 +21,7 @@ const NewWorkoutForm = () => {
   const [description, setDescription] = useState('')
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
+  const [skillId, setSkillId] = useState(0)
 
   const [updateToggle, setUpdateToggle] = useState(false)
 
@@ -63,7 +64,8 @@ const NewWorkoutForm = () => {
       description,
       completionDate,
       skillIncrease,
-      playerId
+      playerId,
+      skillId
     })
   }
 
@@ -121,7 +123,7 @@ const NewWorkoutForm = () => {
               className="collectionButton"
               onClick={() => {
                 const answer = window.confirm(
-                  `Are you sure you want to complete this workout for ${player.name} `
+                  `Are you sure you want to delete this workout for ${player.name} `
                 )
                 if (answer) {
                   deleteHandle(workout.id)
@@ -201,11 +203,14 @@ const NewWorkoutForm = () => {
             <div>
               {' '}
               Select Skills:
-              <select>
+              <select
+                value={skillId}
+                onChange={(e) => setSkillId(e.target.value)}
+              >
                 <option value="nothing"></option>
                 {skills.map((skill) => (
-                  <option value="allSkills">{skill.skillName}</option>
-                ))}{' '}
+                  <option value={skill.id}>{skill.skillName}</option>
+                ))}
               </select>
             </div>
             <label htmlFor="skillIncrease">Skill Increase: </label>

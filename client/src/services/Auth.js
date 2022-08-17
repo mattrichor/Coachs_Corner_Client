@@ -16,7 +16,7 @@ export const SignInPlayer = async (data) => {
     localStorage.setItem('token', res.data.token)
     const player = await Client.get(`/players/logging_in/${data.email}`)
     // Set the current signed in users token to localStorage
-    localStorage.setItem('player', JSON.stringify(player))
+    localStorage.setItem('player', JSON.stringify(player.data))
     return res.data.coach
   } catch (error) {
     throw error

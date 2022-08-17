@@ -1,22 +1,43 @@
+import '../SignIn.css'
+
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { SignInUser } from '../services/Auth'
+import { SignInCoach } from '../services/Auth'
+import { SignInPlayer } from '../services/Auth'
 
 const SignIn = (props) => {
   let navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
-
+  const [loginToggle, setLoginToggle] = useState(false)
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
+  const toggleLogin = () => {
+    if (loginToggle === false) {
+      setLoginToggle(true)
+      console.log(loginToggle)
+    } else if (loginToggle === true) {
+      setLoginToggle(false)
+      console.log(loginToggle)
+    }
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
-    const payload = await SignInUser(formValues)
-    setFormValues({ email: '', password: '' })
-    props.setCoach(payload)
-    props.toggleAuthenticated(true)
-    navigate('/coachfeed')
+    if (loginToggle === false) {
+      const payload = await SignInCoach(formValues)
+      setFormValues({ email: '', password: '' })
+      props.setCoach(payload)
+      props.toggleAuthenticated(true)
+      navigate('/coachfeed')
+    } else if (loginToggle === true) {
+      const payload = await SignInPlayer(formValues)
+      setFormValues({ email: '', password: '' })
+      props.setCoach(payload)
+      props.toggleAuthenticated(true)
+      navigate('/coachfeed')
+    }
   }
 
   return (
@@ -44,8 +65,12 @@ const SignIn = (props) => {
               required
             />
           </div>
+          <label className="login-toggle">
+            <input type="checkbox" onClick={() => toggleLogin()} />
+            <span className="slider"></span>
+          </label>
           <button disabled={!formValues.email || !formValues.password}>
-            Sign In
+            Submit
           </button>
           <br></br>
           <button

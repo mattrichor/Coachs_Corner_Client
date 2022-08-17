@@ -22,6 +22,7 @@ const NewWorkoutForm = () => {
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
   const [skillId, setSkillId] = useState(0)
+  const [skillName, setSkillName] = useState('')
 
   const [updateToggle, setUpdateToggle] = useState(false)
 
@@ -118,7 +119,10 @@ const NewWorkoutForm = () => {
             <h3>Title: {workout.title}</h3>
             <p>Description: {workout.description}</p>
             <p>Complete Workout by: {workout.completionDate}</p>
-            <p>This workout will increase skill by: {workout.skillIncrease}</p>
+            <p>
+              This workout will increase {skillName} skill by:
+              {workout.skillIncrease}
+            </p>
             <button
               className="collectionButton"
               onClick={() => {
@@ -171,7 +175,6 @@ const NewWorkoutForm = () => {
                 <option value="allWorkouts">{workout.title}</option>
               ))}
             </select>
-            {''}
 
             <label htmlFor="title">Title: </label>
             <input
@@ -201,7 +204,6 @@ const NewWorkoutForm = () => {
               required
             />
             <div>
-              {' '}
               Select Skills:
               <select
                 value={skillId}
@@ -209,7 +211,12 @@ const NewWorkoutForm = () => {
               >
                 <option value="nothing"></option>
                 {skills.map((skill) => (
-                  <option value={skill.id}>{skill.skillName}</option>
+                  <option
+                    value={skill.id}
+                    onChangeCapture={() => setSkillName(skill.skillName)}
+                  >
+                    {skill.skillName}
+                  </option>
                 ))}
               </select>
             </div>

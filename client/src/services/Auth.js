@@ -1,8 +1,18 @@
 import Client from './api'
 
-export const SignInUser = async (data) => {
+export const SignInCoach = async (data) => {
   try {
-    const res = await Client.post('/auth/login', data)
+    const res = await Client.post('/auth/login/coach', data)
+    // Set the current signed in users token to localStorage
+    localStorage.setItem('token', res.data.token)
+    return res.data.coach
+  } catch (error) {
+    throw error
+  }
+}
+export const SignInPlayer = async (data) => {
+  try {
+    const res = await Client.post('/auth/login/player', data)
     // Set the current signed in users token to localStorage
     localStorage.setItem('token', res.data.token)
     return res.data.coach

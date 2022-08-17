@@ -2,6 +2,7 @@ import '../SignIn.css'
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { SignInCoach } from '../services/Auth'
 import { SignInPlayer } from '../services/Auth'
 
@@ -44,11 +45,12 @@ const SignIn = (props) => {
   }
 
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
+    <div className="signin-col-ch">
+      <div className="card-overlay-centered-ch">
+        <h1>Your Team Awaits Orders!</h1>
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email"></label>
             <input
               onChange={handleChange}
               name="email"
@@ -59,11 +61,12 @@ const SignIn = (props) => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password"></label>
             <input
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder="password"
               value={formValues.password}
               required
             />

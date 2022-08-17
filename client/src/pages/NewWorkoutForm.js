@@ -20,6 +20,8 @@ const NewWorkoutForm = () => {
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
 
+  const [updateToggle, setUpdateToggle] = useState(false)
+
   useEffect(() => {
     const playerName = localStorage.getItem('player')
     let selplayer = JSON.parse(playerName)
@@ -33,7 +35,8 @@ const NewWorkoutForm = () => {
       console.log(data)
     }
     handleWorkouts()
-  }, [player])
+    setUpdateToggle(false)
+  }, [player, updateToggle === true])
 
   useEffect(() => {
     const getAllWorkouts = async () => {
@@ -69,10 +72,23 @@ const NewWorkoutForm = () => {
     console.log(data)
   }
 
-  const updateHandle = async (workoutId) => {
-    const data = await handleUpdate(workoutId)
+  const updateHandle = async (
+    workoutId,
+    title,
+    description,
+    completionDate,
+    skillIncrease
+  ) => {
+    const data = await handleUpdate(
+      workoutId,
+      title,
+      description,
+      completionDate,
+      skillIncrease
+    )
       .then((data) => console.log(data.status))
       .catch((error) => console.log(error))
+    setUpdateToggle(true)
   }
 
   const updateWorkoutDelete = async (item) => {

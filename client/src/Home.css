@@ -1,0 +1,17 @@
+/* #CDD7E2; grey/blue, #07173D; navy blue, #F9763D; orange, #2C7BD2 light blue*/
+
+.home{
+  background-image: url(https://www.10wallpaper.com/wallpaper/1366x768/1804/Baseball_soil_stadium_sand_closeup_1366x768.jpg) ;
+/* background-color: #f9763D; */
+  background-size: cover;
+  height: 850px;
+  
+}
+.homeH1{
+  margin-top: 0;
+}
+
+.bats{
+    height: 400px;
+    width: 400px;
+  }

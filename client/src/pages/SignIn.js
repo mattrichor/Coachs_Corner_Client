@@ -41,9 +41,7 @@ const SignIn = (props) => {
       const player = JSON.parse(localStorage.getItem('player'))
       props.setCoach(payload)
       props.toggleAuthenticated(true)
-      player.data.map((player) => {
-        navigate(`/players/${player.id}`)
-      })
+      navigate(`/players/${player.id}`)
     }
   }
 

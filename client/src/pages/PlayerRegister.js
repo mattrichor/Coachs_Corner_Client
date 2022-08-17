@@ -15,7 +15,8 @@ const Register = () => {
     age: undefined,
     isActive: undefined,
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
+    coachId: undefined
   })
 
   const handleChange = (e) => {
@@ -27,7 +28,13 @@ const Register = () => {
     await RegisterPlayer({
       name: formValues.name,
       email: formValues.email,
-      password: formValues.password
+      password: formValues.password,
+      primaryPosition: formValues.primaryPosition,
+      secondaryPosition: formValues.secondaryPosition,
+      height: formValues.height,
+      weight: formValues.weight,
+      age: formValues.age,
+      coachId: formValues.coachId
     })
     setFormValues({
       name: '',
@@ -40,7 +47,8 @@ const Register = () => {
       age: undefined,
       isActive: undefined,
       password: '',
-      confirmPassword: ''
+      confirmPassword: '',
+      coachId: undefined
     })
     if (formValues.password !== formValues.confirmPassword) {
       alert('Passwords do not match! Please try again!')

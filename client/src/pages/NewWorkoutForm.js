@@ -5,6 +5,7 @@ import {
   handleSubmit,
   handleUpdate
 } from '../services/Workouts'
+import '../Workout.css'
 
 import { MarkComplete } from '../services/Skills'
 import { GetSkillsByPlayerId, GetSkillNames } from '../services/Skills'
@@ -114,7 +115,7 @@ const Workout = () => {
 
   return (
     <div>
-      <h1>Assign a new workout for {player.name}!</h1>
+      <h1 className="title">Assign a new workout for {player.name}!</h1>
       <div>
         {playerWorkouts.map((workout) => (
           <WorkoutCard

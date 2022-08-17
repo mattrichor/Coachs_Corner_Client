@@ -1,7 +1,10 @@
+
 import '../SignIn.css'
+import '../Feed.css'
 
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+
 import { SignInCoach } from '../services/Auth'
 import { SignInPlayer } from '../services/Auth'
 
@@ -10,8 +13,8 @@ const SignIn = (props) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' })
   const [loginToggle, setLoginToggle] = useState(false)
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value })
-  }
+    setFormValues({ ...formValues, [e.target.name]: e.target.value });
+  };
 
   const toggleLogin = () => {
     if (loginToggle === false) {
@@ -24,6 +27,7 @@ const SignIn = (props) => {
   }
 
   const handleSubmit = async (e) => {
+
     e.preventDefault()
     if (loginToggle === false) {
       const payload = await SignInCoach(formValues)
@@ -42,11 +46,13 @@ const SignIn = (props) => {
   }
 
   return (
-    <div className="signin col">
-      <div className="card-overlay centered">
+   <div className="bg-sign-in">
+    <div className="signin-col-ch">
+      <div className="card-overlay-centered-ch">
+        <h1>Your Team Awaits Orders!</h1>
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email"></label>
             <input
               onChange={handleChange}
               name="email"
@@ -57,11 +63,12 @@ const SignIn = (props) => {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password"></label>
             <input
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder="password"
               value={formValues.password}
               required
             />
@@ -82,9 +89,11 @@ const SignIn = (props) => {
             Register Here!
           </button>
         </form>
+        </div>
+
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default SignIn
+export default SignIn;

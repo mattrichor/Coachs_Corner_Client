@@ -48,14 +48,15 @@ const SignIn = (props) => {
       <div className="signin-col-ch">
         <div className="card-overlay-centered-ch">
           {loginToggle ? (
-            <h1>Your Orders Await!</h1>
+            <h1 className="login-title">Your Orders Await!</h1>
           ) : (
-            <h1>Your Team Awaits Orders!</h1>
+            <h1 className="login-title">Your Team Awaits Orders!</h1>
           )}
           <form className="col" onSubmit={handleSubmit}>
             <div className="input-wrapper">
               <label htmlFor="email"></label>
               <input
+                className="email"
                 onChange={handleChange}
                 name="email"
                 type="email"
@@ -67,6 +68,7 @@ const SignIn = (props) => {
             <div className="input-wrapper">
               <label htmlFor="password"></label>
               <input
+                className="password"
                 onChange={handleChange}
                 type="password"
                 name="password"
@@ -94,7 +96,7 @@ const SignIn = (props) => {
             </div>
             <div className="button-div">
               <button
-                className="submit-btn"
+                className="submit-btn reg-btn"
                 onClick={() => {
                   navigate('/register')
                 }}

@@ -59,11 +59,12 @@ const Register = () => {
   return (
     <div className="signin-col">
       <div className="card-overlay-centered">
-        <h1>Please Register Here:</h1>
+        <h1 className="reg-title">Please Register Here:</h1>
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="name"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="name"
               type="text"
@@ -75,6 +76,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="email"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="email"
               type="email"
@@ -86,6 +88,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="primaryPosition"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="primaryPosition"
               type="text"
@@ -97,6 +100,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="secondaryPosition"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="secondaryPosition"
               type="text"
@@ -108,6 +112,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="height"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="height"
               type="number"
@@ -119,6 +124,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="weight"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="weight"
               type="number"
@@ -130,6 +136,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="age"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="age"
               type="number"
@@ -142,6 +149,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="password"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               type="password"
               name="password"
@@ -153,6 +161,7 @@ const Register = () => {
           <div className="input-wrapper-last">
             <label htmlFor="confirmPassword"></label>
             <input
+              className="reg-input last-input"
               onChange={handleChange}
               type="password"
               name="confirmPassword"
@@ -163,7 +172,7 @@ const Register = () => {
           </div>
 
           <button
-            className="submit-btn"
+            className="submit-btn reg-submit-btn"
             disabled={
               !formValues.email ||
               (!formValues.password &&

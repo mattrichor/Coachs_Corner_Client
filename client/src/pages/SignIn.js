@@ -1,4 +1,3 @@
-
 import '../SignIn.css'
 import '../Feed.css'
 
@@ -13,8 +12,8 @@ const SignIn = (props) => {
   const [formValues, setFormValues] = useState({ email: '', password: '' })
   const [loginToggle, setLoginToggle] = useState(false)
   const handleChange = (e) => {
-    setFormValues({ ...formValues, [e.target.name]: e.target.value });
-  };
+    setFormValues({ ...formValues, [e.target.name]: e.target.value })
+  }
 
   const toggleLogin = () => {
     if (loginToggle === false) {
@@ -27,7 +26,6 @@ const SignIn = (props) => {
   }
 
   const handleSubmit = async (e) => {
-
     e.preventDefault()
     if (loginToggle === false) {
       const payload = await SignInCoach(formValues)
@@ -46,54 +44,69 @@ const SignIn = (props) => {
   }
 
   return (
-   <div className="bg-sign-in">
-    <div className="signin-col-ch">
-      <div className="card-overlay-centered-ch">
-        <h1>Your Team Awaits Orders!</h1>
-        <form className="col" onSubmit={handleSubmit}>
-          <div className="input-wrapper">
-            <label htmlFor="email"></label>
-            <input
-              onChange={handleChange}
-              name="email"
-              type="email"
-              placeholder="example@example.com"
-              value={formValues.email}
-              required
-            />
-          </div>
-          <div className="input-wrapper">
-            <label htmlFor="password"></label>
-            <input
-              onChange={handleChange}
-              type="password"
-              name="password"
-              placeholder="password"
-              value={formValues.password}
-              required
-            />
-          </div>
-          <label className="login-toggle">
-            <input type="checkbox" onClick={() => toggleLogin()} />
-            <span className="slider"></span>
-          </label>
-          <button disabled={!formValues.email || !formValues.password}>
-            Submit
-          </button>
-          <br></br>
-          <button
-            onClick={() => {
-              navigate('/register')
-            }}
-          >
-            Register Here!
-          </button>
-        </form>
+    <div className="bg-sign-in">
+      <div className="signin-col-ch">
+        <div className="card-overlay-centered-ch">
+          {loginToggle ? (
+            <h1>Your Orders Await!</h1>
+          ) : (
+            <h1>Your Team Awaits Orders!</h1>
+          )}
+          <form className="col" onSubmit={handleSubmit}>
+            <div className="input-wrapper">
+              <label htmlFor="email"></label>
+              <input
+                onChange={handleChange}
+                name="email"
+                type="email"
+                placeholder="example@example.com"
+                value={formValues.email}
+                required
+              />
+            </div>
+            <div className="input-wrapper">
+              <label htmlFor="password"></label>
+              <input
+                onChange={handleChange}
+                type="password"
+                name="password"
+                placeholder="password"
+                value={formValues.password}
+                required
+              />
+            </div>
+            Login As:
+            <div className="toggle-box">
+              <div className="coach">Coach</div>
+              <label className="login-toggle">
+                <input type="checkbox" onClick={() => toggleLogin()} />
+                <span className="slider"></span>
+              </label>
+              <div className="player">Player</div>
+            </div>
+            <div className="button-div">
+              <button
+                disabled={!formValues.email || !formValues.password}
+                className="submit-btn"
+              >
+                Submit
+              </button>
+            </div>
+            <div className="button-div">
+              <button
+                className="submit-btn"
+                onClick={() => {
+                  navigate('/register')
+                }}
+              >
+                Register Here!
+              </button>
+            </div>
+          </form>
         </div>
-
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default SignIn;
+export default SignIn

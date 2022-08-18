@@ -1,48 +1,48 @@
-.signin-col{
-    margin-top: 40px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    height: 400px;
-    width: 300px;
-    background-color: #dee1e5;
-    border: 3px solid black;
-    border-radius: 20px;
+.signin-col {
+  margin-top: 40px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 400px;
+  width: 300px;
+  background-color: #dee1e5;
+  border: 3px solid black;
+  border-radius: 20px;
 }
-.signin-col-ch{
-    margin-top: 40px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    height: 300px;
-    width: 300px;
-    background-color: #dee1e5;
-    border: 3px solid black;
-    border-radius: 20px;
+.signin-col-ch {
+  margin-top: 40px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 300px;
+  background-color: #dee1e5;
+  border: 3px solid black;
+  border-radius: 20px;
 }
-.register-background{
-    background-image: url(https://library.sportingnews.com/styles/crop_style_16_9_mobile_2x/s3/2022-06/Guillermo-Martinez-062222-getty-ftr.jpg?h=920929c4&itok=CmMwqByz);
-    background-size: cover;
-    margin-top: -40px;
-    height: 1000px;
+.register-background {
+  background-image: url(https://library.sportingnews.com/styles/crop_style_16_9_mobile_2x/s3/2022-06/Guillermo-Martinez-062222-getty-ftr.jpg?h=920929c4&itok=CmMwqByz);
+  background-size: cover;
+  margin-top: -40px;
+  height: 1000px;
 }
-.bl-ch-div{
-    margin-top: -55px;
+.bl-ch-div {
+  margin-top: -55px;
 }
-.coach-q{
-    margin-top: 40px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    height: 100px;
-    width: 300px;
-    background-color: #dee1e5;
-    border: 3px solid black;
-    border-radius: 20px;
+.coach-q {
+  margin-top: 40px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100px;
+  width: 300px;
+  background-color: #dee1e5;
+  border: 3px solid black;
+  border-radius: 20px;
 }
-.input-wrapper{
-    margin-bottom: 2px;
+.input-wrapper {
+  margin-bottom: 2px;
 }
-.input-wrapper-last{
-    margin-bottom: 15px;
+.input-wrapper-last {
+  margin-bottom: 15px;
 }

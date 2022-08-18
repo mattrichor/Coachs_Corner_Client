@@ -25,7 +25,7 @@ const Workout = () => {
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [completionDate, setCompletionDate] = useState('')
-  const [skillIncrease, setSkillIncrease] = useState(0)
+  const [skillIncrease, setSkillIncrease] = useState('')
   const [skillId, setSkillId] = useState(0)
   const [selWorkout, setSelWorkout] = useState()
   const [selectedWorkoutData, setSelectedWorkoutData] = useState({})
@@ -144,10 +144,7 @@ const Workout = () => {
         ))}
       </div>
       <div>
-        <h1>
-          Choose a new workout from the drop down below, or add in your own with
-          the form!
-        </h1>
+        <h1>Create new workout, or choose from a template:</h1>
         <div>
           <WorkoutForm submitHandle={submitHandle} />
         </div>
@@ -158,7 +155,6 @@ const Workout = () => {
               value={selWorkout}
               onChange={(e) => setSelWorkout(e.target.value)}
             >
-              <option value="nothing"></option>
               {workouts.map((workout) => (
                 <option value={workout.id}>{workout.title}</option>
               ))}

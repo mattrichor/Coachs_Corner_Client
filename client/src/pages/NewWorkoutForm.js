@@ -148,43 +148,6 @@ const Workout = () => {
               </option>
             ))}
           </select>
-          <input
-            onChange={(e) => setExistWorkout(e.target.value)}
-            type="text"
-            id="description"
-            placeholder="Description"
-            value={completionDate}
-          />
-          <input
-            onChange={(e) => setExistWorkout(e.target.value)}
-            type="date"
-            id="completeBy"
-            placeholder=""
-            value={completionDate}
-          />
-          <select
-            value={skillId}
-            onChange={(e) => setExistWorkout(e.target.value)}
-          >
-            <option value="nothing"></option>
-            {skills.map((skill) => (
-              <option
-                value={skill.id}
-                // onChange={() => setSkillName(skill.skillName)}
-              >
-                {skill.skillName}
-              </option>
-            ))}
-          </select>
-          <input
-            onChange={(e) => setExistWorkout(e.target.value)}
-            type="number"
-            id="skillIncrease"
-            placeholder="Skill (Number)"
-            value={skillIncrease}
-          />
-
-          <button type="submit">Send</button>
         </form>
         <div className="new-workout">
           <form onSubmit={submitHandle}>

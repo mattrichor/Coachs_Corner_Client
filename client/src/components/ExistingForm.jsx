@@ -76,7 +76,7 @@ const ExistingForm = (props) => {
             value={props.skillId}
             onChange={(e) => props.setSkillId(e.target.value)}
           >
-            <option value="nothing"></option>
+            <option value="nothing">Select Skill Below</option>
             {props.skills.map((skill) => (
               <option value={skill.id}>{skill.skillName}</option>
             ))}

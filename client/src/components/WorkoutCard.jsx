@@ -1,9 +1,12 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { handleDelete } from '../services/Workouts'
 import '../Workout.css'
 import checkmark from '../images/checkmark.png'
+import { GetSkillNames } from '../services/Skills'
 
 const WorkoutCard = (props) => {
+  const [skillName, setSkillName] = useState('')
+
   const deleteHandle = async (workoutId) => {
     const data = await handleDelete(workoutId).catch((error) =>
       console.log(error)
@@ -11,7 +14,12 @@ const WorkoutCard = (props) => {
     console.log(data)
   }
   useEffect(() => {
-    props.getSkillName(props.skillId)
+    const getSkillName = async () => {
+      const data = await GetSkillNames(props.skillId)
+      console.log(data)
+      setSkillName(data.skillName)
+    }
+    getSkillName()
   }, [])
 
   return (
@@ -41,7 +49,7 @@ const WorkoutCard = (props) => {
         <span className="comp-date"> {props.completionDate}</span>
       </div>
       <p>
-        This workout will increase {props.skillName} by: {props.skillIncrease}
+        This workout will increase {skillName} by: {props.skillIncrease}
       </p>
 
       <button

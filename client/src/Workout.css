@@ -36,6 +36,10 @@ body {
   font-style: italic;
 }
 
+.desc-box{
+  width: 250px;
+  height: 100px;
+}
 .workout-title {
   padding-bottom: 1.5%;
   display: flex;

@@ -1,82 +1,82 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect } from "react";
 import {
   getWorkouts,
   allWorkouts,
   handleSubmit,
-  handleUpdate
-} from '../services/Workouts'
-import '../Workout.css'
+  handleUpdate,
+} from "../services/Workouts";
+import "../Workout.css";
 
-import { MarkComplete } from '../services/Skills'
-import { GetSkillsByPlayerId, GetSkillNames } from '../services/Skills'
-import { useParams } from 'react-router-dom'
-import WorkoutCard from '../components/WorkoutCard'
-import WorkoutForm from '../components/WorkoutForm'
+import { MarkComplete } from "../services/Skills";
+import { GetSkillsByPlayerId, GetSkillNames } from "../services/Skills";
+import { useParams } from "react-router-dom";
+import WorkoutCard from "../components/WorkoutCard";
+import WorkoutForm from "../components/WorkoutForm";
 
 const Workout = () => {
-  let { playerId } = useParams()
-  const [player, setPlayer] = useState([])
-  const [playerWorkouts, setPlayerWorkouts] = useState([])
-  const [workouts, setAllWorkouts] = useState([])
-  const [skills, setAllSkills] = useState([])
-  const [title, setTitle] = useState('')
-  const [description, setDescription] = useState('')
-  const [completionDate, setCompletionDate] = useState('')
-  const [skillIncrease, setSkillIncrease] = useState(0)
-  const [skillId, setSkillId] = useState(0)
+  let { playerId } = useParams();
+  const [player, setPlayer] = useState([]);
+  const [playerWorkouts, setPlayerWorkouts] = useState([]);
+  const [workouts, setAllWorkouts] = useState([]);
+  const [skills, setAllSkills] = useState([]);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [completionDate, setCompletionDate] = useState("");
+  const [skillIncrease, setSkillIncrease] = useState(0);
+  const [skillId, setSkillId] = useState(0);
 
-  const [updateToggle, setUpdateToggle] = useState(false)
+  const [updateToggle, setUpdateToggle] = useState(false);
 
   useEffect(() => {
-    const playerName = localStorage.getItem('player')
-    let selplayer = JSON.parse(playerName)
-    setPlayer(selplayer)
-  }, [])
+    const playerName = localStorage.getItem("player");
+    let selplayer = JSON.parse(playerName);
+    setPlayer(selplayer);
+  }, []);
 
   useEffect(() => {
     const handleWorkouts = async () => {
-      const data = await getWorkouts(playerId)
-      setPlayerWorkouts(data)
-      console.log(data)
-    }
-    handleWorkouts()
-    setUpdateToggle(false)
-  }, [player, updateToggle === true])
+      const data = await getWorkouts(playerId);
+      setPlayerWorkouts(data);
+      console.log(data);
+    };
+    handleWorkouts();
+    setUpdateToggle(false);
+  }, [player, updateToggle === true]);
 
   useEffect(() => {
     const getAllWorkouts = async () => {
-      const data = await allWorkouts()
-      setAllWorkouts(data)
-    }
-    getAllWorkouts()
-  }, [])
+      const data = await allWorkouts();
+      setAllWorkouts(data);
+    };
+    getAllWorkouts();
+  }, []);
 
   useEffect(() => {
     const getAllSkills = async () => {
-      const data = await GetSkillsByPlayerId(playerId)
-      setAllSkills(data)
-    }
-    getAllSkills()
-  }, [player])
+      const data = await GetSkillsByPlayerId(playerId);
+      setAllSkills(data);
+    };
+    getAllSkills();
+  }, [player]);
 
   const submitHandle = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     await handleSubmit(playerId, {
       title,
       description,
       completionDate,
       skillIncrease,
       playerId,
-      skillId
-    })
-  }
+      skillId,
+    });
+  };
 
   const completeWorkout = async (playerId, workoutId) => {
     const data = await MarkComplete(playerId, workoutId).catch((error) =>
       console.log(error)
-    )
-    console.log(data)
-  }
+    );
+    console.log(data);
+  };
 
   const updateHandle = async (
     workoutId,
@@ -93,16 +93,16 @@ const Workout = () => {
       skillIncrease
     )
       .then((data) => console.log(data.status))
-      .catch((error) => console.log(error))
-    setUpdateToggle(true)
-  }
+      .catch((error) => console.log(error));
+    setUpdateToggle(true);
+  };
 
   const updateWorkoutDelete = async (item) => {
-    let index = playerWorkouts.indexOf(item)
-    let temp = [...playerWorkouts]
-    temp.splice(index, 1)
-    setPlayerWorkouts(temp)
-  }
+    let index = playerWorkouts.indexOf(item);
+    let temp = [...playerWorkouts];
+    temp.splice(index, 1);
+    setPlayerWorkouts(temp);
+  };
 
   return (
     <div>
@@ -156,15 +156,18 @@ const Workout = () => {
               value={title}
               required
             />
-            <label htmlFor="description">Description: </label>
-            <input
-              onChange={(e) => setDescription(e.target.value)}
-              type="text"
-              id="description"
-              placeholder="Description"
-              value={description}
-              required
-            />
+            <div>
+              <label htmlFor="description">Description: </label>
+              <input
+                className="desc-box"
+                onChange={(e) => setDescription(e.target.value)}
+                type="text"
+                id="description"
+                placeholder="Description"
+                value={description}
+                required
+              />
+            </div>
             <label htmlFor="completeBy">Complete Workout By: </label>
             <input
               onChange={(e) => setCompletionDate(e.target.value)}
@@ -205,7 +208,7 @@ const Workout = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Workout
+export default Workout;

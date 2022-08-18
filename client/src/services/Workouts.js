@@ -9,6 +9,15 @@ export const getWorkouts = async (playerId) => {
   }
 }
 
+export const GetWorkoutById = async (id) => {
+  try {
+    const res = await Client.get(`/workoutById/${id}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const allWorkouts = async () => {
   try {
     const res = await Client.get('/workout')

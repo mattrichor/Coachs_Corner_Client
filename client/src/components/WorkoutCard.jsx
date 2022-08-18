@@ -31,25 +31,50 @@ const WorkoutCard = (props) => {
 
   return (
     <div className="workout-card">
-      <div className="card-top">
-        <button
-          className="delete-btn"
-          onClick={() => {
-            const answer = window.confirm(
-              `Are you sure you want to delete this workout for ${props.name} `
-            )
-            if (answer) {
-              deleteHandle(props.id)
-              props.updateWorkoutDelete(props)
-            } else {
-              return
-            }
-          }}
-        >
-          X
-        </button>
-        <h3 className="workout-title">{props.title}</h3>
-      </div>
+      {props.completed === true ? (
+        <div className="card-top completed">
+          <button
+            className="delete-btn"
+            onClick={() => {
+              const answer = window.confirm(
+                `Are you sure you want to delete this workout for ${props.name} `
+              )
+              if (answer) {
+                deleteHandle(props.id)
+                props.updateWorkoutDelete(props)
+              } else {
+                return
+              }
+            }}
+          >
+            X
+          </button>
+          <h3 className="workout-title">{props.title}</h3>
+          <div>Workout Completed!</div>
+        </div>
+      ) : (
+        <div className="card-top">
+          <button
+            className="delete-btn"
+            onClick={() => {
+              const answer = window.confirm(
+                `Are you sure you want to delete this workout for ${props.name} `
+              )
+              if (answer) {
+                deleteHandle(props.id)
+                props.updateWorkoutDelete(props)
+              } else {
+                return
+              }
+            }}
+          >
+            X
+          </button>
+          <h3 className="workout-title">{props.title}</h3>
+          <div>Workout Assigned</div>
+        </div>
+      )}
+
       <div className="workout-description">{props.description}</div>
       <div className="workout-comp-date">
         Complete workout by:
@@ -58,26 +83,30 @@ const WorkoutCard = (props) => {
       <p>
         This workout will increase {skillName} by: {props.skillIncrease}
       </p>
-
-      <button
-        className="update-btn"
-        onClick={() => {
-          props.updateHandle(
-            props.id,
-            props.titles,
-            props.descriptions,
-            props.completionDates,
-            props.skillIncreases
-          )
-        }}
-      >
-        Update
-      </button>
       {isPlayer === true ? (
-        <div className="container">
+        <div>Mark as Complete:</div>
+      ) : (
+        <button
+          className="update-btn"
+          onClick={() => {
+            props.updateHandle(
+              props.id,
+              props.titles,
+              props.descriptions,
+              props.completionDates,
+              props.skillIncreases
+            )
+          }}
+        >
+          Update
+        </button>
+      )}
+
+      {isPlayer === true ? (
+        <div className="container-player">
           <img
             src={checkmark}
-            className="completion-btn"
+            className="completion-btn-player"
             onClick={() => markComplete(props.id)}
           ></img>
         </div>

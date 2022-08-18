@@ -203,6 +203,7 @@ const PlayerDetails = () => {
             <WorkoutCard
               key={workout.id}
               id={workout.id}
+              completed={workout.completed}
               title={workout.title}
               description={workout.description}
               completionDate={workout.completionDate}

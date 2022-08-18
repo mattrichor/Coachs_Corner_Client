@@ -69,7 +69,7 @@ const Workout = () => {
     //   playerId,
     //   skillId,
     // });
-    console.log(JSON.parse(existWorkout));
+    console.log(existWorkout);
     console.log(typeof existWorkout);
   };
 
@@ -143,11 +143,47 @@ const Workout = () => {
           <select onChange={(e) => setExistWorkout(e.target.value)}>
             <option value="nothing">Existing Workouts:</option>
             {workouts.map((workout) => (
-              <option id="title" value={workout}>
+              <option id="title" value={workout.description}>
                 {workout.title}
               </option>
             ))}
           </select>
+          <input
+            onChange={(e) => setExistWorkout(e.target.value)}
+            type="text"
+            id="description"
+            placeholder="Description"
+            value={completionDate}
+          />
+          <input
+            onChange={(e) => setExistWorkout(e.target.value)}
+            type="date"
+            id="completeBy"
+            placeholder=""
+            value={completionDate}
+          />
+          <select
+            value={skillId}
+            onChange={(e) => setExistWorkout(e.target.value)}
+          >
+            <option value="nothing"></option>
+            {skills.map((skill) => (
+              <option
+                value={skill.id}
+                // onChange={() => setSkillName(skill.skillName)}
+              >
+                {skill.skillName}
+              </option>
+            ))}
+          </select>
+          <input
+            onChange={(e) => setExistWorkout(e.target.value)}
+            type="number"
+            id="skillIncrease"
+            placeholder="Skill (Number)"
+            value={skillIncrease}
+          />
+
           <button type="submit">Send</button>
         </form>
         <div className="new-workout">
@@ -160,7 +196,7 @@ const Workout = () => {
                 placeholder="Title"
                 value={title}
                 required
-              />
+              />{" "}
             </div>
             <div className="desc">
               {/* <label className="desc-text" htmlFor="description">

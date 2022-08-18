@@ -1,5 +1,7 @@
 import '../Details.css'
 import { Bar } from 'react-chartjs-2'
+import WorkoutCard from '../components/WorkoutCard'
+import { getWorkouts } from '../services/Workouts'
 import {
   Chart as ChartJs,
   CategoryScale,
@@ -12,13 +14,17 @@ import axios from 'axios'
 import { GetSkillsByPlayerId } from '../services/Skills'
 import SkillChart from '../components/SkillChart'
 import { useNavigate } from 'react-router-dom'
+import emptyProPic from '../images/propic.png'
+import pitcher from '../images/pitcher.png'
+import fielder from '../images/fielder.png'
+import batter from '../images/batter.png'
 
 ChartJs.register(CategoryScale, LinearScale, BarElement)
 
 const PlayerDetails = () => {
   let { playerId } = useParams()
   let navigate = useNavigate()
-
+  const [playerWorkouts, setPlayerWorkouts] = useState([])
   const [chartData, setChartData] = useState({
     labels: ['skill1', 'skill2', 'skill3', 'skill4', 'skill5', 'skill6'],
     datasets: [{ data: [1, 2, 3, 4, 5, 6] }]
@@ -68,9 +74,33 @@ const PlayerDetails = () => {
     getSkills()
   }, [player])
 
+  useEffect(() => {
+    const handleWorkouts = async () => {
+      const data = await getWorkouts(playerId)
+      setPlayerWorkouts(data)
+      console.log(data)
+    }
+    handleWorkouts()
+  }, [player])
+
+  const isPlayer = JSON.parse(localStorage.getItem('isPlayer'))
+
   let feet = player.height / 12
   let feetMath = Math.floor(feet).toFixed(0)
   let inchMath = player.height % 12
+
+  let randomProPic
+  let randomPicMath = Math.floor(Math.random() * 3) + 1
+  switch (randomPicMath) {
+    case 1:
+      randomProPic = pitcher
+      break
+    case 2:
+      randomProPic = batter
+      break
+    case 3:
+      randomProPic = fielder
+  }
 
   let secondaryPosAbr
   switch (player.secondaryPosition) {
@@ -162,11 +192,31 @@ const PlayerDetails = () => {
             {player.proPic !== null ? (
               <img className="pic" src={player.proPic}></img>
             ) : (
-              <img className="pic"></img>
+              <img className="pic" src={randomProPic}></img>
             )}
           </div>
         </div>
       </div>
+      {isPlayer === true ? (
+        <div>
+          {playerWorkouts.map((workout) => (
+            <WorkoutCard
+              key={workout.id}
+              id={workout.id}
+              completed={workout.completed}
+              title={workout.title}
+              description={workout.description}
+              completionDate={workout.completionDate}
+              skillIncrease={workout.skillIncrease}
+              name={player.name}
+              playerId={playerId}
+              skillId={workout.skillId}
+            />
+          ))}
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   )
 }

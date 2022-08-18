@@ -3,7 +3,8 @@ import {
   getWorkouts,
   allWorkouts,
   handleSubmit,
-  handleUpdate
+  handleUpdate,
+  GetWorkoutById
 } from '../services/Workouts'
 import '../Workout.css'
 
@@ -24,6 +25,9 @@ const Workout = () => {
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
   const [skillId, setSkillId] = useState(0)
+  const [selWorkout, setSelWorkout] = useState()
+  const [selectedWorkoutData, setSelectedWorkoutData] = useState({})
+  const [formToggle, setFormToggle] = useState(false)
 
   const [updateToggle, setUpdateToggle] = useState(false)
 
@@ -104,6 +108,13 @@ const Workout = () => {
     setPlayerWorkouts(temp)
   }
 
+  const populateWorkout = async (e) => {
+    e.preventDefault()
+    const workoutData = await GetWorkoutById(selWorkout)
+    setSelectedWorkoutData(workoutData)
+    setFormToggle(true)
+  }
+
   return (
     <div>
       <h1 className="title">Assign a new workout for {player.name}!</h1>
@@ -117,6 +128,7 @@ const Workout = () => {
             completionDate={workout.completionDate}
             skillIncrease={workout.skillIncrease}
             name={player.name}
+            completed={workout.completed}
             playerId={playerId}
             titles={title}
             skillId={workout.skillId}
@@ -139,69 +151,133 @@ const Workout = () => {
         </div>
         <div>
           Existing Workouts:
-          <form onSubmit={submitHandle}>
-            <select>
+          <form onSubmit={populateWorkout}>
+            <select
+              value={selWorkout}
+              onChange={(e) => setSelWorkout(e.target.value)}
+            >
               <option value="nothing"></option>
               {workouts.map((workout) => (
-                <option value="allWorkouts">{workout.title}</option>
+                <option value={workout.id}>{workout.title}</option>
               ))}
             </select>
-
-            <label htmlFor="title">Title: </label>
-            <input
-              onChange={(e) => setTitle(e.target.value)}
-              type="text"
-              id="title"
-              placeholder="Title"
-              value={title}
-              required
-            />
-            <label htmlFor="description">Description: </label>
-            <input
-              onChange={(e) => setDescription(e.target.value)}
-              type="text"
-              id="description"
-              placeholder="Description"
-              value={description}
-              required
-            />
-            <label htmlFor="completeBy">Complete Workout By: </label>
-            <input
-              onChange={(e) => setCompletionDate(e.target.value)}
-              type="date"
-              id="completeBy"
-              placeholder=""
-              value={completionDate}
-              required
-            />
-            <div>
-              Select Skills:
-              <select
-                value={skillId}
-                onChange={(e) => setSkillId(e.target.value)}
-              >
-                <option value="nothing"></option>
-                {skills.map((skill) => (
-                  <option
-                    value={skill.id}
-                    // onChange={() => setSkillName(skill.skillName)}
-                  >
-                    {skill.skillName}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <label htmlFor="skillIncrease">Skill Increase: </label>
-            <input
-              onChange={(e) => setSkillIncrease(e.target.value)}
-              type="number"
-              id="skillIncrease"
-              placeholder="Skill (Number)"
-              value={skillIncrease}
-              required
-            />
-            <button type="submit">Send</button>
+            <button type="submit">Select Past Workout</button>
           </form>
+          {formToggle === true ? (
+            <form onSubmit={submitHandle}>
+              <label htmlFor="title">Title: </label>
+              <input
+                onChange={(e) => setTitle(e.target.value)}
+                type="text"
+                id="title"
+                placeholder="Title"
+                value={title}
+                required
+              />
+              <label htmlFor="description">Description: </label>
+              <input
+                onChange={(e) => setDescription(e.target.value)}
+                type="text"
+                id="description"
+                placeholder="Description"
+                value={description}
+                required
+              />
+              <label htmlFor="completeBy">Complete Workout By: </label>
+              <input
+                onChange={(e) => setCompletionDate(e.target.value)}
+                type="date"
+                id="completeBy"
+                placeholder=""
+                value={completionDate}
+                required
+              />
+              <div>
+                Select Skills:
+                <select
+                  value={skillId}
+                  onChange={(e) => setSkillId(e.target.value)}
+                >
+                  <option value="nothing"></option>
+                  {skills.map((skill) => (
+                    <option
+                      value={skill.id}
+                      // onChange={() => setSkillName(skill.skillName)}
+                    >
+                      {skill.skillName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <label htmlFor="skillIncrease">Skill Increase: </label>
+              <input
+                onChange={(e) => setSkillIncrease(e.target.value)}
+                type="number"
+                id="skillIncrease"
+                placeholder="Skill (Number)"
+                value={skillIncrease}
+                required
+              />
+              <button type="submit">Send</button>
+            </form>
+          ) : (
+            <form onSubmit={submitHandle}>
+              <label htmlFor="title">Title: </label>
+              <input
+                onChange={(e) => setTitle(e.target.value)}
+                type="text"
+                id="title"
+                placeholder="Title"
+                value={title}
+                required
+              />
+              <label htmlFor="description">Description: </label>
+              <input
+                onChange={(e) => setDescription(e.target.value)}
+                type="text"
+                id="description"
+                placeholder="Description"
+                value={description}
+                required
+              />
+              <label htmlFor="completeBy">Complete Workout By: </label>
+              <input
+                onChange={(e) => setCompletionDate(e.target.value)}
+                type="date"
+                id="completeBy"
+                placeholder=""
+                value={completionDate}
+                required
+              />
+              <div>
+                Select Skills:
+                <select
+                  value={skillId}
+                  onChange={(e) => setSkillId(e.target.value)}
+                >
+                  <option value="nothing"></option>
+                  {skills.map((skill) => (
+                    <option
+                      value={skill.id}
+                      // onChange={() => setSkillName(skill.skillName)}
+                    >
+                      {skill.skillName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <label htmlFor="skillIncrease">Skill Increase: </label>
+              <input
+                onChange={(e) => setSkillIncrease(e.target.value)}
+                type="number"
+                id="skillIncrease"
+                placeholder="Skill (Number)"
+                value={skillIncrease}
+                required
+              />
+              <button type="submit">Send</button>
+            </form>
+          )}
         </div>
       </div>
     </div>

@@ -9,6 +9,15 @@ export const getWorkouts = async (playerId) => {
   }
 }
 
+export const GetWorkoutById = async (id) => {
+  try {
+    const res = await Client.get(`/workoutById/${id}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const allWorkouts = async () => {
   try {
     const res = await Client.get('/workout')
@@ -50,6 +59,15 @@ export const handleUpdate = async (
       completionDate,
       skillIncrease
     })
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const MarkComplete = async (workoutId) => {
+  try {
+    const res = await Client.put(`/complete/${workoutId}`)
     return res.data
   } catch (error) {
     throw error

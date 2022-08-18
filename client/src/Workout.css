@@ -43,9 +43,8 @@ body {
   margin-top: 0;
 }
 
-.card-top,
-.workout-title {
-  background-color: #cdd7e2;
+.card-top {
+  background-color: #eec39c;
 }
 
 .title {
@@ -58,13 +57,29 @@ body {
   max-width: 35px;
   display: flex;
 }
-.completion-btn:hover {
+.completion-btn:hover,
+.completion-btn-player:hover {
   background-color: aquamarine;
 }
 .container {
   display: flex;
   justify-content: flex-end;
 }
-.container:hover {
+
+.container-player {
+  display: flex;
+  justify-content: center;
+}
+.container:hover,
+.container-player:hover {
   cursor: url(https://i.imgur.com/naOfk05.png?1), auto;
+}
+
+.completion-btn-player {
+  max-height: 35px;
+  max-width: 35px;
+}
+
+.completed {
+  background-color: rgb(139, 203, 139);
 }

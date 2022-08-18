@@ -3,8 +3,8 @@
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
-  height: 400px;
-  width: 300px;
+  height: fit-content;
+  width: 325px;
   background-color: #dee1e5;
   border: 3px solid black;
   border-radius: 20px;
@@ -14,7 +14,7 @@
   margin-bottom: 0;
   margin-left: auto;
   margin-right: auto;
-  height: 300px;
+  height: fit-content;
   width: 300px;
   background-color: #dee1e5;
   border: 3px solid black;
@@ -45,4 +45,20 @@
 }
 .input-wrapper-last {
   margin-bottom: 15px;
+}
+
+.reg-input {
+  border-radius: 0.25rem;
+  border: #2196f3;
+  height: 25px;
+  margin: 0.6%;
+  width: 60%;
+}
+
+.reg-submit-btn {
+  margin: 5%;
+}
+
+.last-input {
+  margin-bottom: -5%;
 }

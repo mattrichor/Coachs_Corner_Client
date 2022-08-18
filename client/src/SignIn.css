@@ -12,17 +12,7 @@
   margin-top: 20px;
   margin-bottom: 10px;
 }
-.signin-col-ch {
-  margin-top: 40px;
-  margin-bottom: 0;
-  margin-left: auto;
-  margin-right: auto;
-  height: 290px;
-  width: 300px;
-  background-color: #dee1e5;
-  border: 3px solid black;
-  border-radius: 20px;
-}
+
 .login-toggle {
   position: relative;
   display: inline-block;
@@ -120,4 +110,16 @@ input:checked + .slider:before {
 .submit-btn:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+.login-title {
+  margin: 5%;
+}
+
+.reg-title {
+  margin: 2%;
+}
+
+.reg-btn {
+  margin-bottom: 2.5%;
 }

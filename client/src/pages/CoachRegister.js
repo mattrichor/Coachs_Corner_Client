@@ -43,12 +43,13 @@ const Register = () => {
   }
   return (
     <div className="signin-col-ch">
-      <div className="card-overlay-centered-ch">
-        <h1>Your Team Awaits!</h1>
+      <div className="card-overlay-centered-ch coach-reg">
+        <h1 className="reg-title">Your Team Awaits!</h1>
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
             <label htmlFor="name"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="name"
               type="text"
@@ -60,6 +61,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="email"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="email"
               type="email"
@@ -71,6 +73,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="sport"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="sport"
               type="text"
@@ -82,6 +85,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="teamName"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               name="teamName"
               type="text"
@@ -93,6 +97,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="password"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               type="password"
               name="password"
@@ -104,6 +109,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="confirmPassword"></label>
             <input
+              className="reg-input"
               onChange={handleChange}
               type="password"
               name="confirmPassword"
@@ -113,7 +119,7 @@ const Register = () => {
             />
           </div>
           <button
-            className="submit-btn"
+            className="submit-btn reg-submit-btn"
             disabled={
               !formValues.email ||
               (!formValues.password &&

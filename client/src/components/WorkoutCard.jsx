@@ -22,6 +22,8 @@ const WorkoutCard = (props) => {
     getSkillName()
   }, [])
 
+  const isPlayer = JSON.parse(localStorage.getItem('isPlayer'))
+
   return (
     <div className="workout-card">
       <div className="card-top">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { handleDelete } from '../services/Workouts'
 import '../Workout.css'
 import checkmark from '../images/checkmark.png'
@@ -10,6 +10,9 @@ const WorkoutCard = (props) => {
     )
     console.log(data)
   }
+  useEffect(() => {
+    props.getSkillName(props.skillId)
+  }, [])
 
   return (
     <div className="workout-card">

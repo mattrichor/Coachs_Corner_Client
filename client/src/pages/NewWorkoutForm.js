@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, createRef } from 'react'
 import {
   getWorkouts,
   allWorkouts,
@@ -13,6 +13,8 @@ import { GetSkillsByPlayerId, GetSkillNames } from '../services/Skills'
 import { useParams } from 'react-router-dom'
 import WorkoutCard from '../components/WorkoutCard'
 import WorkoutForm from '../components/WorkoutForm'
+import NewForm from '../components/NewForm'
+import ExistingForm from '../components/ExistingForm'
 
 const Workout = () => {
   let { playerId } = useParams()
@@ -164,119 +166,38 @@ const Workout = () => {
             <button type="submit">Select Past Workout</button>
           </form>
           {formToggle === true ? (
-            <form onSubmit={submitHandle}>
-              <label htmlFor="title">Title: </label>
-              <input
-                onChange={(e) => setTitle(e.target.value)}
-                type="text"
-                id="title"
-                placeholder="Title"
-                value={title}
-                required
-              />
-              <label htmlFor="description">Description: </label>
-              <input
-                onChange={(e) => setDescription(e.target.value)}
-                type="text"
-                id="description"
-                placeholder="Description"
-                value={description}
-                required
-              />
-              <label htmlFor="completeBy">Complete Workout By: </label>
-              <input
-                onChange={(e) => setCompletionDate(e.target.value)}
-                type="date"
-                id="completeBy"
-                placeholder=""
-                value={completionDate}
-                required
-              />
-              <div>
-                Select Skills:
-                <select
-                  value={skillId}
-                  onChange={(e) => setSkillId(e.target.value)}
-                >
-                  <option value="nothing"></option>
-                  {skills.map((skill) => (
-                    <option
-                      value={skill.id}
-                      // onChange={() => setSkillName(skill.skillName)}
-                    >
-                      {skill.skillName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <label htmlFor="skillIncrease">Skill Increase: </label>
-              <input
-                onChange={(e) => setSkillIncrease(e.target.value)}
-                type="number"
-                id="skillIncrease"
-                placeholder="Skill (Number)"
-                value={skillIncrease}
-                required
-              />
-              <button type="submit">Send</button>
-            </form>
+            <ExistingForm
+              submitHandle={submitHandle}
+              selectedWorkoutData={selectedWorkoutData}
+              setTitle={setTitle}
+              title={title}
+              playerId={playerId}
+              setDescription={setDescription}
+              description={description}
+              setCompletionDate={setCompletionDate}
+              completionDate={completionDate}
+              skillId={skillId}
+              setSkillId={setSkillId}
+              skills={skills}
+              setSkillIncrease={setSkillIncrease}
+              skillIncrease={skillIncrease}
+            />
           ) : (
-            <form onSubmit={submitHandle}>
-              <label htmlFor="title">Title: </label>
-              <input
-                onChange={(e) => setTitle(e.target.value)}
-                type="text"
-                id="title"
-                placeholder="Title"
-                value={title}
-                required
-              />
-              <label htmlFor="description">Description: </label>
-              <input
-                onChange={(e) => setDescription(e.target.value)}
-                type="text"
-                id="description"
-                placeholder="Description"
-                value={description}
-                required
-              />
-              <label htmlFor="completeBy">Complete Workout By: </label>
-              <input
-                onChange={(e) => setCompletionDate(e.target.value)}
-                type="date"
-                id="completeBy"
-                placeholder=""
-                value={completionDate}
-                required
-              />
-              <div>
-                Select Skills:
-                <select
-                  value={skillId}
-                  onChange={(e) => setSkillId(e.target.value)}
-                >
-                  <option value="nothing"></option>
-                  {skills.map((skill) => (
-                    <option
-                      value={skill.id}
-                      // onChange={() => setSkillName(skill.skillName)}
-                    >
-                      {skill.skillName}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <label htmlFor="skillIncrease">Skill Increase: </label>
-              <input
-                onChange={(e) => setSkillIncrease(e.target.value)}
-                type="number"
-                id="skillIncrease"
-                placeholder="Skill (Number)"
-                value={skillIncrease}
-                required
-              />
-              <button type="submit">Send</button>
-            </form>
+            <NewForm
+              submitHandle={submitHandle}
+              setTitle={setTitle}
+              title={title}
+              setDescription={setDescription}
+              description={description}
+              setCompletionDate={setCompletionDate}
+              completionDate={completionDate}
+              skillId={skillId}
+              setSkillId={setSkillId}
+              skills={skills}
+              playerId={playerId}
+              setSkillIncrease={setSkillIncrease}
+              skillIncrease={skillIncrease}
+            />
           )}
         </div>
       </div>

@@ -129,37 +129,39 @@ const Workout = () => {
           />
         ))}
       </div>
-      <div>
-        <h1>
+      <div className="add-workout-card">
+        <h1 className="add-workout-title">
           Choose a new workout from the drop down below, or add in your own with
           the form!
-        </h1>
+        </h1>{" "}
+        <select>
+          <option value="nothing">Existing Workouts:</option>
+          {workouts.map((workout) => (
+            <option value="allWorkouts">{workout.title}</option>
+          ))}
+        </select>
         <div>
+          <button type="submit">Send</button>
           <WorkoutForm submitHandle={submitHandle} />
         </div>
-        <div>
-          Existing Workouts:
+        <div className="new-workout">
           <form onSubmit={submitHandle}>
-            <select>
-              <option value="nothing"></option>
-              {workouts.map((workout) => (
-                <option value="allWorkouts">{workout.title}</option>
-              ))}
-            </select>
-
-            <label htmlFor="title">Title: </label>
-            <input
-              onChange={(e) => setTitle(e.target.value)}
-              type="text"
-              id="title"
-              placeholder="Title"
-              value={title}
-              required
-            />
-            <div>
-              <label htmlFor="description">Description: </label>
+            <div className="title2">
+              {/* <label htmlFor="title">Title: </label> */}
               <input
-                className="desc-box"
+                onChange={(e) => setTitle(e.target.value)}
+                type="text"
+                id="title"
+                placeholder="Title"
+                value={title}
+                required
+              />
+            </div>
+            <div className="desc">
+              {/* <label className="desc-text" htmlFor="description">
+                Description:{" "}
+              </label> */}
+              <textarea
                 onChange={(e) => setDescription(e.target.value)}
                 type="text"
                 id="description"
@@ -168,16 +170,18 @@ const Workout = () => {
                 required
               />
             </div>
-            <label htmlFor="completeBy">Complete Workout By: </label>
-            <input
-              onChange={(e) => setCompletionDate(e.target.value)}
-              type="date"
-              id="completeBy"
-              placeholder=""
-              value={completionDate}
-              required
-            />
-            <div>
+            <div className="to-complete">
+              <label htmlFor="completeBy">Complete Workout By: </label>
+              <input
+                onChange={(e) => setCompletionDate(e.target.value)}
+                type="date"
+                id="completeBy"
+                placeholder=""
+                value={completionDate}
+                required
+              />
+            </div>
+            <div className="select-skills">
               Select Skills:
               <select
                 value={skillId}
@@ -203,7 +207,10 @@ const Workout = () => {
               value={skillIncrease}
               required
             />
-            <button type="submit">Send</button>
+
+            <button className="submit" type="submit">
+              Send
+            </button>
           </form>
         </div>
       </div>

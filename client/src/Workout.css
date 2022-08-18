@@ -83,3 +83,43 @@ body {
 .completed {
   background-color: rgb(139, 203, 139);
 }
+
+.title-input {
+  padding-bottom: 1.5%;
+  display: flex;
+  justify-content: center;
+  margin-top: 0;
+  background-color: #eddecf;
+  border: none;
+}
+.descr-input {
+  width: 100%;
+}
+.comp-input {
+}
+.skill-input {
+}
+.incr-input {
+}
+
+.title-wrapper,
+.incr-wrapper,
+.skill-wrapper {
+  display: flex;
+  justify-content: center;
+}
+.descr-wrapper {
+  display: flex;
+  justify-content: flex start;
+}
+.comp-wrapper {
+  display: flex;
+  justify-content: flex start;
+}
+.skill-wrapper {
+}
+.incr-wrapper {
+}
+.title-wrapper {
+  background-color: #eec39c;
+}

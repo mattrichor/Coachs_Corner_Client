@@ -24,7 +24,7 @@ const Workout = () => {
   const [completionDate, setCompletionDate] = useState("");
   const [skillIncrease, setSkillIncrease] = useState(0);
   const [skillId, setSkillId] = useState(0);
-
+  const [existWorkout, setExistWorkout] = useState({});
   const [updateToggle, setUpdateToggle] = useState(false);
 
   useEffect(() => {
@@ -61,14 +61,16 @@ const Workout = () => {
 
   const submitHandle = async (e) => {
     e.preventDefault();
-    await handleSubmit(playerId, {
-      title,
-      description,
-      completionDate,
-      skillIncrease,
-      playerId,
-      skillId,
-    });
+    // await handleSubmit(playerId, {
+    //   title,
+    //   description,
+    //   completionDate,
+    //   skillIncrease,
+    //   playerId,
+    //   skillId,
+    // });
+    console.log(JSON.parse(existWorkout));
+    console.log(typeof existWorkout);
   };
 
   const completeWorkout = async (playerId, workoutId) => {
@@ -131,25 +133,28 @@ const Workout = () => {
       </div>
       <div className="add-workout-card">
         <h1 className="add-workout-title">
+          <div>
+            <WorkoutForm submitHandle={submitHandle} />
+          </div>
           Choose a new workout from the drop down below, or add in your own with
           the form!
         </h1>{" "}
-        <select>
-          <option value="nothing">Existing Workouts:</option>
-          {workouts.map((workout) => (
-            <option value="allWorkouts">{workout.title}</option>
-          ))}
-        </select>
-        <div>
+        <form onSubmit={submitHandle}>
+          <select onChange={(e) => setExistWorkout(e.target.value)}>
+            <option value="nothing">Existing Workouts:</option>
+            {workouts.map((workout) => (
+              <option id="title" value={workout}>
+                {workout.title}
+              </option>
+            ))}
+          </select>
           <button type="submit">Send</button>
-          <WorkoutForm submitHandle={submitHandle} />
-        </div>
+        </form>
         <div className="new-workout">
           <form onSubmit={submitHandle}>
             <div className="title2">
               {/* <label htmlFor="title">Title: </label> */}
               <input
-                onChange={(e) => setTitle(e.target.value)}
                 type="text"
                 id="title"
                 placeholder="Title"

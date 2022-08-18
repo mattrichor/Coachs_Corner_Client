@@ -1,37 +1,47 @@
 /* #CDD7E2; grey/blue, #07173D; navy blue, #F9763D; orange, #2C7BD2 light blue*/
 
-.home{
+.home {
   /* background-image: url(https://www.10wallpaper.com/wallpaper/1366x768/1804/Baseball_soil_stadium_sand_closeup_1366x768.jpg) ; */
-/* background-color: #f9763D; */
-  background-size: 100%;
+  /* background-color: #f9763D; */
+  background-size: cover;
   background-repeat: no-repeat;
   background-image: url(https://imgs.search.brave.com/xVOg-BgCXEFLB-9dR_ZqHpDWgBEhPx-nFPtnd2XeGSA/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzL2E1LzMw/LzEyL2E1MzAxMjNk/YzRiYzQ2MDcyZTBj/ZTg4MGMxM2NiMjU2/LmpwZw);
-  
-  height: 1000px;
-  
+  background-size: cover;
 }
-.homeH1{
+.homeH1 {
   margin-top: 0;
-  background-color: #f9763d;
+  margin-bottom: 0;
   font-size: 48pt;
   color: white;
 }
-.homeH2{
-  margin-top: -47px;
+.homeH2 {
+  margin-top: 0;
   margin-bottom: 50px;
-  background-color: #f9763d;
-  color:white
+  color: white;
 }
-.homeButton{
-  margin-top: 510px;
 
+.home-title {
+  background-color: #f9763d;
+}
+.homeButton {
+  display: flex;
   padding: 40px;
   background-color: #f9763d;
   font-size: 20pt;
   font-family: Georgia;
 }
 
-.bats{
-    height: 400px;
-    width: 400px;
-  }
+.homeButton:hover {
+}
+
+.home-btn-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
+}
+.bats {
+  height: 400px;
+  width: 400px;
+}

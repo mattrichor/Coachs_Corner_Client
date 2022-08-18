@@ -55,3 +55,12 @@ export const handleUpdate = async (
     throw error
   }
 }
+
+export const MarkComplete = async (workoutId) => {
+  try {
+    const res = await Client.put(`/complete/${workoutId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

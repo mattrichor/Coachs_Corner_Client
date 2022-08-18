@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { handleDelete } from '../services/Workouts'
+import { handleDelete, MarkComplete } from '../services/Workouts'
 import '../Workout.css'
 import checkmark from '../images/checkmark.png'
 import { GetSkillNames } from '../services/Skills'
@@ -21,6 +21,11 @@ const WorkoutCard = (props) => {
     }
     getSkillName()
   }, [])
+
+  const markComplete = async (workoutId) => {
+    const completedWorkout = await MarkComplete(workoutId)
+    console.log(completedWorkout)
+  }
 
   const isPlayer = JSON.parse(localStorage.getItem('isPlayer'))
 
@@ -68,13 +73,23 @@ const WorkoutCard = (props) => {
       >
         Update
       </button>
-      <div className="container">
-        <img
-          src={checkmark}
-          className="completion-btn"
-          onClick={() => props.completeWorkout(props.playerId, props.id)}
-        ></img>
-      </div>
+      {isPlayer === true ? (
+        <div className="container">
+          <img
+            src={checkmark}
+            className="completion-btn"
+            onClick={() => markComplete(props.id)}
+          ></img>
+        </div>
+      ) : (
+        <div className="container">
+          <img
+            src={checkmark}
+            className="completion-btn"
+            onClick={() => props.completeWorkout(props.playerId, props.id)}
+          ></img>
+        </div>
+      )}
     </div>
   )
 }

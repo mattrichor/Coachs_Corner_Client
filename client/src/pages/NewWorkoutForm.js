@@ -24,7 +24,6 @@ const Workout = () => {
   const [completionDate, setCompletionDate] = useState('')
   const [skillIncrease, setSkillIncrease] = useState(0)
   const [skillId, setSkillId] = useState(0)
-  const [skillName, setSkillName] = useState('')
 
   const [updateToggle, setUpdateToggle] = useState(false)
 
@@ -59,14 +58,6 @@ const Workout = () => {
     }
     getAllSkills()
   }, [player])
-
-  // useEffect(() => {
-  //   const GetAllSkillNames = async (skillId) => {
-  //     const data = await GetSkillNames(skillId)
-  //     setSkillName(data)
-  //   }
-  //   GetAllSkillNames()
-  // }, [])
 
   const submitHandle = async (e) => {
     e.preventDefault()
@@ -128,10 +119,10 @@ const Workout = () => {
             name={player.name}
             playerId={playerId}
             titles={title}
+            skillId={workout.skillId}
             descriptions={description}
             completionDates={completionDate}
             skillIncreases={skillIncrease}
-            // skillName={skillName}
             updateWorkoutDelete={updateWorkoutDelete}
             updateHandle={updateHandle}
             completeWorkout={completeWorkout}

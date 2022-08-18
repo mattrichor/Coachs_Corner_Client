@@ -20,7 +20,7 @@ export const MarkComplete = async (playerId, workoutId) => {
 
 export const GetSkillNames = async (skillId) => {
   try {
-    const res = await Client.get(`/skills/${skillId}`)
+    const res = await Client.get(`/${skillId}`)
     return res.data
   } catch (error) {
     throw error

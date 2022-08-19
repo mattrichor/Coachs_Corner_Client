@@ -151,6 +151,7 @@ const Workout = () => {
           Existing Workouts:
           <form onSubmit={populateWorkout}>
             <select
+              className="skill-input workout-input"
               value={selWorkout}
               onChange={(e) => setSelWorkout(e.target.value)}
             >
@@ -159,7 +160,9 @@ const Workout = () => {
                 <option value={workout.id}>{workout.title}</option>
               ))}
             </select>
-            <button type="submit">Select Past Workout</button>
+            <button type="submit" className="submit-btn workout-btn-select">
+              Select Past Workout
+            </button>
           </form>
           {formToggle === true ? (
             <ExistingForm

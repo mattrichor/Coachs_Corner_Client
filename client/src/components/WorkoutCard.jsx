@@ -25,6 +25,7 @@ const WorkoutCard = (props) => {
   const markComplete = async (workoutId) => {
     const completedWorkout = await MarkComplete(workoutId)
     console.log(completedWorkout)
+    props.setUpdateToggle(true)
   }
 
   const isPlayer = JSON.parse(localStorage.getItem('isPlayer'))
@@ -58,7 +59,7 @@ const WorkoutCard = (props) => {
             className="delete-btn"
             onClick={() => {
               const answer = window.confirm(
-                `Are you sure you want to delete this workout for ${props.name} `
+                `Are you sure you want to delete this workout for ${props.name}? `
               )
               if (answer) {
                 deleteHandle(props.id)
@@ -101,7 +102,6 @@ const WorkoutCard = (props) => {
           Update
         </button>
       )}
-
       {isPlayer === true ? (
         <div className="container-player">
           <img
@@ -111,12 +111,42 @@ const WorkoutCard = (props) => {
           ></img>
         </div>
       ) : (
-        <div className="container">
-          <img
-            src={checkmark}
-            className="completion-btn"
-            onClick={() => props.completeWorkout(props.playerId, props.id)}
-          ></img>
+        <div>
+          {props.completed === true ? (
+            <div className="container">
+              <img
+                src={checkmark}
+                className="completion-btn"
+                onClick={() => {
+                  const answer = window.confirm(
+                    `Are you sure you want to mark this workout as complete for ${props.name}?`
+                  )
+                  if (answer) {
+                    props.completeWorkout(props.playerId, props.id)
+                  } else {
+                    return
+                  }
+                }}
+              ></img>
+            </div>
+          ) : (
+            <div className="container">
+              <img
+                src={checkmark}
+                className="completion-btn"
+                onClick={() => {
+                  const answer = window.confirm(
+                    ` ${props.name} has not completed this workout. Would you still like to mark it as complete?`
+                  )
+                  if (answer) {
+                    props.completeWorkout(props.playerId, props.id)
+                  } else {
+                    return
+                  }
+                }}
+              ></img>
+            </div>
+          )}
         </div>
       )}
     </div>

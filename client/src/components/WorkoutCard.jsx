@@ -135,7 +135,7 @@ const WorkoutCard = (props) => {
                 className="completion-btn"
                 onClick={() => {
                   const answer = window.confirm(
-                    ` ${props.name} has not completed this workout. Would you still like to mark it as compelte?`
+                    ` ${props.name} has not completed this workout. Would you still like to mark it as complete?`
                   )
                   if (answer) {
                     props.completeWorkout(props.playerId, props.id)

@@ -12,7 +12,6 @@ import { MarkComplete } from '../services/Skills'
 import { GetSkillsByPlayerId, GetSkillNames } from '../services/Skills'
 import { useParams } from 'react-router-dom'
 import WorkoutCard from '../components/WorkoutCard'
-import WorkoutForm from '../components/WorkoutForm'
 import NewForm from '../components/NewForm'
 import ExistingForm from '../components/ExistingForm'
 
@@ -146,15 +145,13 @@ const Workout = () => {
       <div>
         <h1>Create new workout, or choose from a template:</h1>
         <div>
-          <WorkoutForm submitHandle={submitHandle} />
-        </div>
-        <div>
           Existing Workouts:
           <form onSubmit={populateWorkout}>
             <select
               value={selWorkout}
               onChange={(e) => setSelWorkout(e.target.value)}
             >
+              <option value="nothing">Select Workout Below</option>
               {workouts.map((workout) => (
                 <option value={workout.id}>{workout.title}</option>
               ))}

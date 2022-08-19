@@ -59,4 +59,12 @@ h2 {
 }
 .workoutButton {
   margin-right: 10%;
+  display: flex;
+  justify-content: center;
+  /* max-height: 40%; */
+}
+.workout-btn {
+  max-height: 40%;
+  display: flex;
+  justify-content: center;
 }

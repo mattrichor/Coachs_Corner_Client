@@ -9,44 +9,31 @@ import PlayerCard from '../components/PlayerCard'
 import PlayerDetails from './PlayerDetails'
 
 const CoachFeed = ({ coach, choosePlayer, allPlayers }) => {
-  // const [allPlayers, setAllPlayers] = useState([])
   const [selectedPlayer, setSelectedPlayer] = useState()
 
-  // const choosePlayer = (selected) => {
-  //   setSelectedPlayer(selected)
-  //   navigate(`/players/${selected.id}`)
-  // }
-
-  // useEffect(() => {
-  //   const handlePlayers = async () => {
-  //     const data = await GetPlayers(coach.id)
-
-  //     setAllPlayers(data)
-  //     console.log(data)
-  //   }
-  //   handlePlayers()
-  // }, [coach])
-
   return (
-    <div className="player-cards">
-      {allPlayers.map((player) => (
-        <div onClick={() => choosePlayer(player)}>
-          <PlayerCard
-            key={player.id}
-            name={player.name}
-            email={player.email}
-            height={player.height}
-            weight={player.weight}
-            age={player.age}
-            primaryPos={player.primaryPosition}
-            secondaryPos={player.secondaryPosition}
-            id={player.id}
-            isActive={player.isActive}
-            proPic={player.proPic}
-            player={player}
-          ></PlayerCard>
-        </div>
-      ))}
+    <div>
+      <h3 className="title team-name">{coach.teamName}</h3>
+      <div className="player-cards">
+        {allPlayers.map((player) => (
+          <div onClick={() => choosePlayer(player)}>
+            <PlayerCard
+              key={player.id}
+              name={player.name}
+              email={player.email}
+              height={player.height}
+              weight={player.weight}
+              age={player.age}
+              primaryPos={player.primaryPosition}
+              secondaryPos={player.secondaryPosition}
+              id={player.id}
+              isActive={player.isActive}
+              proPic={player.proPic}
+              player={player}
+            ></PlayerCard>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }

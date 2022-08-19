@@ -171,11 +171,12 @@ const PlayerDetails = () => {
         </div>
         <div className="workoutButton">
           <button
+            className="submit-btn workout-btn"
             onClick={() => {
               navigate(`/newworkout/${playerId}`)
             }}
           >
-            Create a workout for {player.name}
+            Create workout for {player.name}
           </button>
         </div>
       </div>

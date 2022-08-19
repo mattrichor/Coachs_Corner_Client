@@ -13,6 +13,7 @@ import PlayerDetails from './pages/PlayerDetails'
 import CoachFeed from './pages/CoachFeed'
 import { useNavigate } from 'react-router-dom'
 import NewWorkoutForm from './pages/NewWorkoutForm'
+import CoachChooser from './pages/CoachChooser'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -101,6 +102,7 @@ function App() {
             path="/players/:playerId"
             element={<PlayerDetails player={selectedPlayer} />}
           />
+          <Route path="/coachChooser" element={<CoachChooser />} />
           <Route
             path="/newworkout/:playerId"
             element={<NewWorkoutForm player={selectedPlayer} />}

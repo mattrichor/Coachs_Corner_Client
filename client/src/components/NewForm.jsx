@@ -1,7 +1,6 @@
 import '../Feed.css'
 
 import React from 'react'
-import { useState, useEffect, createRef } from 'react'
 
 const NewForm = (props) => {
   return (

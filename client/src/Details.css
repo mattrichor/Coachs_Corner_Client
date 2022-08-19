@@ -63,7 +63,6 @@ h2 {
 .workoutButton {
   display: flex;
   grid-template-rows: 1fr 1fr;
-  margin-left: -10%;
 }
 .workout-btn {
   max-height: 45%;

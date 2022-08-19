@@ -54,7 +54,6 @@ const Register = () => {
       alert('Passwords do not match! Please try again!')
     } else {
       navigate('/signin')
-      // navigate('/coachChooser')
     }
   }
   return (

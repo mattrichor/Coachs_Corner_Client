@@ -1,4 +1,4 @@
-import { useState, useEffect, createRef } from 'react'
+import { useState, useEffect } from 'react'
 import {
   getWorkouts,
   allWorkouts,
@@ -9,7 +9,7 @@ import {
 import '../Workout.css'
 
 import { MarkComplete } from '../services/Skills'
-import { GetSkillsByPlayerId, GetSkillNames } from '../services/Skills'
+import { GetSkillsByPlayerId } from '../services/Skills'
 import { useParams } from 'react-router-dom'
 import WorkoutCard from '../components/WorkoutCard'
 import NewForm from '../components/NewForm'
@@ -151,6 +151,7 @@ const Workout = () => {
           Existing Workouts:
           <form onSubmit={populateWorkout}>
             <select
+              className="skill-input workout-input"
               value={selWorkout}
               onChange={(e) => setSelWorkout(e.target.value)}
             >
@@ -159,7 +160,9 @@ const Workout = () => {
                 <option value={workout.id}>{workout.title}</option>
               ))}
             </select>
-            <button type="submit">Select Past Workout</button>
+            <button type="submit" className="submit-btn workout-btn-select">
+              Select Past Workout
+            </button>
           </form>
           {formToggle === true ? (
             <ExistingForm

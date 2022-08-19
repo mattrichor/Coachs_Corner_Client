@@ -4,7 +4,6 @@ body {
   padding: 0;
   text-align: center;
   background-color: #cdd7e2;
-  /* cursor: url(https://i.imgur.com/iO6QpYr.png?1), auto; */
 }
 .player-grid {
   display: flex;

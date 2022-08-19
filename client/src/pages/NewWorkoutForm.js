@@ -1,4 +1,4 @@
-import { useState, useEffect, createRef } from 'react'
+import { useState, useEffect } from 'react'
 import {
   getWorkouts,
   allWorkouts,
@@ -9,7 +9,7 @@ import {
 import '../Workout.css'
 
 import { MarkComplete } from '../services/Skills'
-import { GetSkillsByPlayerId, GetSkillNames } from '../services/Skills'
+import { GetSkillsByPlayerId } from '../services/Skills'
 import { useParams } from 'react-router-dom'
 import WorkoutCard from '../components/WorkoutCard'
 import NewForm from '../components/NewForm'

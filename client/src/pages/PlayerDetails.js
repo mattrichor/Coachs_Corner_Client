@@ -1,5 +1,5 @@
 import '../Details.css'
-import { Bar } from 'react-chartjs-2'
+
 import WorkoutCard from '../components/WorkoutCard'
 import { getWorkouts } from '../services/Workouts'
 import {
@@ -10,11 +10,11 @@ import {
 } from 'chart.js'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import axios from 'axios'
+
 import { GetSkillsByPlayerId } from '../services/Skills'
 import SkillChart from '../components/SkillChart'
 import { useNavigate } from 'react-router-dom'
-import emptyProPic from '../images/propic.png'
+
 import pitcher from '../images/pitcher.png'
 import fielder from '../images/fielder.png'
 import batter from '../images/batter.png'
@@ -70,7 +70,6 @@ const PlayerDetails = () => {
           }
         ]
       })
-      //   setChartToggle(true)
     }
     getSkills()
   }, [player])

@@ -1,16 +1,8 @@
 import '../Feed.css'
 
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import { Link } from 'react-router-dom'
-import { GetPlayers } from '../services/GetPlayers'
-import { Routes, Route } from 'react-router-dom'
 import PlayerCard from '../components/PlayerCard'
-import PlayerDetails from './PlayerDetails'
 
 const CoachFeed = ({ coach, choosePlayer, allPlayers }) => {
-  const [selectedPlayer, setSelectedPlayer] = useState()
-
   return (
     <div>
       <h3 className="title team-name">{coach.teamName}</h3>

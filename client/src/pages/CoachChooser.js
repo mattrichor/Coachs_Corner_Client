@@ -1,13 +1,17 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+
 import { useEffect, useState } from 'react'
 import { GetCoaches, AssignCoachToPlayer } from '../services/Coaches'
+import { useNavigate } from 'react-router-dom'
 
 const CoachChooser = () => {
   const [searchTerm, setSearchTerm] = useState('')
   const [searchResults, setSearchResults] = useState([])
   const [coaches, setCoaches] = useState([])
   const [player, setPlayer] = useState([])
+
+  let navigate = useNavigate()
+
   const handleChange = (e) => {
     setSearchTerm(e.target.value)
   }
@@ -36,7 +40,7 @@ const CoachChooser = () => {
 
   const chooseCoach = async (coachId) => {
     const coach = await AssignCoachToPlayer(player.id, coachId)
-    console.log(coach)
+    navigate(`/players/${player.id}`)
   }
 
   return (

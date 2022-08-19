@@ -1,7 +1,7 @@
 import '../Feed.css'
 
 import React from 'react'
-import { useState, useEffect, createRef } from 'react'
+import { createRef } from 'react'
 import { handleSubmit } from '../services/Workouts'
 
 const ExistingForm = (props) => {

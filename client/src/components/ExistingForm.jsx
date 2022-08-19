@@ -41,38 +41,48 @@ const ExistingForm = (props) => {
   return (
     <div className="workout-card">
       <form onSubmit={createWorkout}>
-        <label htmlFor="title">Title: </label>
-        <input
-          onChange={(e) => props.setTitle(e.target.value)}
-          type="text"
-          id="title"
-          placeholder="Title"
-          defaultValue={props.selectedWorkoutData.title}
-          ref={newTitle}
-          required
-        />
-        <label htmlFor="description">Description: </label>
-        <textarea
-          onChange={(e) => props.setDescription(e.target.value)}
-          type="text"
-          id="description"
-          placeholder="Description"
-          defaultValue={props.selectedWorkoutData.description}
-          ref={newDescription}
-          required
-        />
-        <label htmlFor="completeBy">Complete Workout By: </label>
-        <input
-          onChange={(e) => props.setCompletionDate(e.target.value)}
-          type="date"
-          id="completeBy"
-          placeholder=""
-          value={props.completionDate}
-          required
-        />
-        <div>
+        <div className="title-wrapper">
+          <label htmlFor="title">Title: </label>
+          <input
+            className="title-input"
+            onChange={(e) => props.setTitle(e.target.value)}
+            type="text"
+            id="title"
+            placeholder="Title"
+            defaultValue={props.selectedWorkoutData.title}
+            ref={newTitle}
+            required
+          />
+        </div>
+        <div className="descr-wrapper">
+          <label htmlFor="description">Description: </label>
+          <textarea
+            className="descr-input"
+            onChange={(e) => props.setDescription(e.target.value)}
+            type="text"
+            id="description"
+            placeholder="Description"
+            defaultValue={props.selectedWorkoutData.description}
+            ref={newDescription}
+            required
+          />
+        </div>
+        <div className="comp-wrapper">
+          <label htmlFor="completeBy">Complete Workout By: </label>
+          <input
+            className="comp-input"
+            onChange={(e) => props.setCompletionDate(e.target.value)}
+            type="date"
+            id="completeBy"
+            placeholder=""
+            value={props.completionDate}
+            required
+          />
+        </div>
+        <div className="skill-wrapper">
           Select Skills:
           <select
+            className="skill-input"
             value={props.skillId}
             onChange={(e) => props.setSkillId(e.target.value)}
           >
@@ -82,16 +92,21 @@ const ExistingForm = (props) => {
             ))}
           </select>
         </div>
-        <label htmlFor="skillIncrease">Skill Increase: </label>
-        <input
-          onChange={(e) => props.setSkillIncrease(e.target.value)}
-          type="number"
-          id="skillIncrease"
-          placeholder="Skill (Number)"
-          value={props.skillIncrease}
-          required
-        />
-        <button type="submit">Send</button>
+        <div className="incr-wrapper">
+          <label htmlFor="skillIncrease">Skill Increase: </label>
+          <input
+            className="incr-input"
+            onChange={(e) => props.setSkillIncrease(e.target.value)}
+            type="number"
+            id="skillIncrease"
+            placeholder="Skill (Number)"
+            value={props.skillIncrease}
+            required
+          />
+        </div>
+        <button type="submit" className="submit-btn">
+          Create
+        </button>
       </form>
     </div>
   )

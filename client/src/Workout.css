@@ -102,10 +102,20 @@ body {
   border-top: 1px solid black;
 }
 .comp-input {
+  border-radius: 1.2%;
+  border: none;
+  margin: 3px;
+  background-color: #f6f4f4;
 }
 .skill-input {
+  border: none;
+  margin: 2.5px;
+  background-color: #f6f4f4;
 }
 .incr-input {
+  border: none;
+  margin-left: 3px;
+  background-color: #f6f4f4;
 }
 
 .title-wrapper,

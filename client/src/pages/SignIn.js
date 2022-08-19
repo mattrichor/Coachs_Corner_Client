@@ -39,7 +39,11 @@ const SignIn = (props) => {
       const player = JSON.parse(localStorage.getItem('player'))
       props.setCoach(payload)
       props.toggleAuthenticated(true)
-      navigate(`/players/${player.id}`)
+      if (player.coachId === null) {
+        navigate(`/coachChooser`)
+      } else {
+        navigate(`/players/${player.id}`)
+      }
     }
   }
 

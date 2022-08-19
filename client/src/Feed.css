@@ -2,19 +2,36 @@
 .player-rectangle {
   max-width: 250px;
   height: 325px;
-  border-radius: 0.5rem;
+  border-radius: 0.2rem;
   background-color: #1b1b1b;
   cursor: pointer;
   transition: all 0.2s;
+  border-left: 1pt solid black;
+  border-right: 0.7pt solid black;
+}
+.player-rectangle:hover {
+  opacity: 0.7;
+  filter: alpha(opacity=40);
 }
 .player-name {
   background-color: #f9763d;
   color: rgb(255, 255, 255);
 }
+.player-name-grayed {
+  background-color: gray;
+  border-radius: 0.2rem;
+}
 .player-pic {
   max-width: 250px;
   height: 250px;
   margin-top: -20px;
+}
+.player-pic-grayed {
+  max-width: 250px;
+  height: 250px;
+  margin-top: -20px;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
 }
 .player-position {
   color: #cdd7e2;
@@ -25,4 +42,9 @@
   grid-template-columns: repeat(auto-fill, 275px);
   grid-gap: 1em;
   justify-content: center;
+}
+
+.team-name {
+  margin: 0;
+  font-size: x-large;
 }

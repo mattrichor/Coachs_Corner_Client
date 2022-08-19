@@ -74,6 +74,7 @@ const Workout = () => {
       playerId,
       skillId
     })
+    setUpdateToggle(true)
   }
 
   const completeWorkout = async (playerId, workoutId) => {
@@ -81,6 +82,7 @@ const Workout = () => {
       console.log(error)
     )
     console.log(data)
+    setUpdateToggle(true)
   }
 
   const updateHandle = async (
@@ -139,6 +141,7 @@ const Workout = () => {
             updateWorkoutDelete={updateWorkoutDelete}
             updateHandle={updateHandle}
             completeWorkout={completeWorkout}
+            setUpdateToggle={setUpdateToggle}
           />
         ))}
       </div>
@@ -174,6 +177,7 @@ const Workout = () => {
               skills={skills}
               setSkillIncrease={setSkillIncrease}
               skillIncrease={skillIncrease}
+              setUpdateToggle={setUpdateToggle}
             />
           ) : (
             <NewForm

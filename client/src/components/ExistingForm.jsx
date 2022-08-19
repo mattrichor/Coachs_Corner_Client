@@ -36,6 +36,7 @@ const ExistingForm = (props) => {
       playerId,
       skillId
     })
+    props.setUpdateToggle(true)
   }
 
   return (

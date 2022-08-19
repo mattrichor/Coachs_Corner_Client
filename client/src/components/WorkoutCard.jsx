@@ -25,6 +25,7 @@ const WorkoutCard = (props) => {
   const markComplete = async (workoutId) => {
     const completedWorkout = await MarkComplete(workoutId)
     console.log(completedWorkout)
+    props.setUpdateToggle(true)
   }
 
   const isPlayer = JSON.parse(localStorage.getItem('isPlayer'))

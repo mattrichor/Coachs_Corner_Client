@@ -40,7 +40,9 @@ const CoachChooser = () => {
   }
 
   return (
-    <div className="App">
+    <div className="input-wrapper">
+      <h2>New to Coach's Corner?</h2>
+      <h3>Search for your coach below:</h3>
       <input
         type="text"
         placeholder="Search"
@@ -51,7 +53,12 @@ const CoachChooser = () => {
         {searchResults.map((coach) => (
           <li className="search-item">
             {coach.name}
-            <button onClick={() => chooseCoach(coach.id)}>Choose Coach</button>
+            <button
+              className="choose-btn"
+              onClick={() => chooseCoach(coach.id)}
+            >
+              Choose Coach
+            </button>
           </li>
         ))}
       </ul>

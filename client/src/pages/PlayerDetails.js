@@ -18,6 +18,7 @@ import emptyProPic from '../images/propic.png'
 import pitcher from '../images/pitcher.png'
 import fielder from '../images/fielder.png'
 import batter from '../images/batter.png'
+import workoutGif from '../images/batter.gif'
 
 ChartJs.register(CategoryScale, LinearScale, BarElement)
 
@@ -178,6 +179,7 @@ const PlayerDetails = () => {
           >
             Create workout for {player.name}
           </button>
+          <img src={workoutGif}></img>
         </div>
       </div>
       <div className="player-stats-and-pic">

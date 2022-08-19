@@ -170,16 +170,21 @@ const PlayerDetails = () => {
           </div>
         </div>
         <div className="workoutButton">
-          <div className="button-div"></div>
-          <button
-            className="submit-btn workout-btn"
-            onClick={() => {
-              navigate(`/newworkout/${playerId}`)
-            }}
-          >
-            Create workout for {player.name}
-          </button>
-          <img className="gif" src={workoutGif}></img>
+          {isPlayer === true ? (
+            <div></div>
+          ) : (
+            <div>
+              <button
+                className="submit-btn workout-btn"
+                onClick={() => {
+                  navigate(`/newworkout/${playerId}`)
+                }}
+              >
+                Create workout for {player.name}
+              </button>
+              <img className="gif" src={workoutGif}></img>
+            </div>
+          )}
         </div>
       </div>
       <div className="player-stats-and-pic">
@@ -201,7 +206,7 @@ const PlayerDetails = () => {
         </div>
       </div>
       {isPlayer === true ? (
-        <div>
+        <div className="flex-end">
           {playerWorkouts.map((workout) => (
             <WorkoutCard
               key={workout.id}

@@ -61,13 +61,19 @@ h2 {
   color: transparent;
 }
 .workoutButton {
-  margin-right: 10%;
   display: flex;
-  justify-content: center;
-  /* max-height: 40%; */
+  grid-template-rows: 1fr 1fr;
+  margin-left: -10%;
 }
 .workout-btn {
-  max-height: 40%;
+  max-height: 45%;
   display: flex;
   justify-content: center;
+  font-size: small;
+  padding: none;
+}
+
+.gif {
+  max-width: 40%;
+  margin: 0;
 }

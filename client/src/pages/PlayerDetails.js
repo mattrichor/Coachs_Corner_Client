@@ -171,6 +171,7 @@ const PlayerDetails = () => {
           </div>
         </div>
         <div className="workoutButton">
+          <div className="button-div"></div>
           <button
             className="submit-btn workout-btn"
             onClick={() => {
@@ -179,7 +180,7 @@ const PlayerDetails = () => {
           >
             Create workout for {player.name}
           </button>
-          <img src={workoutGif}></img>
+          <img className="gif" src={workoutGif}></img>
         </div>
       </div>
       <div className="player-stats-and-pic">

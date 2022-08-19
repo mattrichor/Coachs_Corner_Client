@@ -40,28 +40,30 @@ const CoachChooser = () => {
   }
 
   return (
-    <div className="input-wrapper">
+    <div className="signin-col-ch">
       <h2>New to Coach's Corner?</h2>
       <h3>Search for your coach below:</h3>
       <input
+        className="search-input"
         type="text"
-        placeholder="Search"
+        placeholder="Search..."
         value={searchTerm}
         onChange={handleChange}
       />
-      <ul>
-        {searchResults.map((coach) => (
-          <li className="search-item">
-            {coach.name}
+      {searchResults.map((coach) => (
+        <div className="grid-container">
+          <div className="search-item">{coach.name}</div>
+
+          <div className="choose-btn-div">
             <button
               className="choose-btn"
               onClick={() => chooseCoach(coach.id)}
             >
-              Choose Coach
+              Select
             </button>
-          </li>
-        ))}
-      </ul>
+          </div>
+        </div>
+      ))}
     </div>
   )
 }

@@ -69,7 +69,7 @@ const NewForm = (props) => {
           />
         </div>
         <button type="submit" className="submit-btn">
-          Send
+          Create
         </button>
       </form>
     </div>

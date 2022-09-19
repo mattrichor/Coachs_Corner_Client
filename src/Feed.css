@@ -11,7 +11,7 @@
 }
 .player-rectangle:hover {
   opacity: 0.7;
-  filter: alpha(opacity=40);
+  transform: scale(1.08);
 }
 .player-name {
   background-color: #f9763d;

@@ -15,6 +15,13 @@ const SignIn = (props) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
 
+  const loginGuest = async () => {
+    const user = await SignInCoach({ email: 'john@mail.com', password: '1234' })
+    props.setCoach(user)
+    props.toggleAuthenticated(true)
+    navigate('/coachfeed')
+  }
+
   const toggleLogin = () => {
     if (loginToggle === false) {
       setLoginToggle(true)
@@ -109,6 +116,14 @@ const SignIn = (props) => {
               </button>
             </div>
           </form>
+          <button
+            className="submit-btn reg-btn"
+            onClick={() => {
+              loginGuest()
+            }}
+          >
+            Login As Guest
+          </button>
         </div>
       </div>
     </div>

@@ -62,22 +62,29 @@ const WorkoutCard = (props) => {
         </div>
       ) : (
         <div className="card-top">
-          <button
-            className="delete-btn"
-            onClick={() => {
-              const answer = window.confirm(
-                `Are you sure you want to delete this workout for ${props.name}? `
-              )
-              if (answer) {
-                deleteHandle(props.id)
-                props.updateWorkoutDelete(props)
-              } else {
-                return
-              }
-            }}
-          >
-            X
-          </button>
+          {isPlayer === true ? (
+            <div></div>
+          ) : (
+            <div>
+              <button
+                className="delete-btn"
+                onClick={() => {
+                  const answer = window.confirm(
+                    `Are you sure you want to delete this workout for ${props.name} `
+                  )
+                  if (answer) {
+                    deleteHandle(props.id)
+                    props.updateWorkoutDelete(props)
+                  } else {
+                    return
+                  }
+                }}
+              >
+                X
+              </button>
+            </div>
+          )}
+
           <h3 className="workout-title">{props.title}</h3>
           <div>Workout Assigned</div>
         </div>

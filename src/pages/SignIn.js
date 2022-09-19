@@ -52,7 +52,7 @@ const SignIn = (props) => {
       <div className="signin-col-ch">
         <div className="card-overlay-centered-ch">
           {loginToggle ? (
-            <h1 className="login-title">Your Orders Await!</h1>
+            <h1 className="login-title">Your Workout Awaits!</h1>
           ) : (
             <h1 className="login-title">Your Team Awaits Orders!</h1>
           )}

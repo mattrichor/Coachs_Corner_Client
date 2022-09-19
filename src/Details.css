@@ -4,10 +4,15 @@
 .player-name {
   background-color: #f9763d;
 }
+.player-detail-name {
+  font-size: x-large;
+}
+
 .player-details-name {
   background-color: #07173d;
   color: #cdd7e2;
   outline: 3px solid #f9763d;
+  font-size: small;
 }
 .player-email {
   background-color: #07173d;

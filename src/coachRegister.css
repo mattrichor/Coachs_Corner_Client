@@ -1,18 +1,19 @@
 /* #CDD7E2; grey/blue, #07173D; navy blue, #F9763D; orange, #2C7BD2 light blue*/
-.signin-col-ch{
-    margin-top: 40px;
-    margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
-    height: 300px;
-    width: 300px;
-    background-color: #dee1e5;
-    border: 3px solid black;
-    border-radius: 20px;
+.signin-col-ch {
+  margin-top: 40px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  height: 300px;
+  width: 300px;
+  background-color: #dee1e530;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border: 3px solid black;
+  border-radius: 20px;
 }
-.input-wrapper{
-    margin-bottom: 2px;
+.input-wrapper {
+  margin-bottom: 2px;
 }
-.input-wrapper-last{
-    margin-bottom: 15px;
+.input-wrapper-last {
+  margin-bottom: 15px;
 }

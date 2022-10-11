@@ -1,9 +1,8 @@
 /* #CDD7E2; grey/blue, #07173D; navy blue, #F9763D; orange, #2C7BD2 light blue*/
 .bg-sign-in {
-  background-image: url(https://cdn.gtgrandstands.com/images/uploads/projects/McKechnie_EntryImage.jpg);
-  background-size: cover;
+  background-image: url(../src/images/CC-background-small.webp);
   height: 92.8vh;
-  margin-top: -40px;
+  margin-top: -2%;
 }
 .input-wrapper-2 {
   margin-bottom: 5px;
@@ -24,6 +23,14 @@
   opacity: 0;
   width: 0;
   height: 0;
+}
+
+.email,
+.password {
+  border-radius: 0.3rem;
+  width: 65%;
+  height: 20px;
+  margin: 0.5%;
 }
 
 /* The slider. Got these initial stylings from w3 (https://www.w3schools.com/howto/howto_css_switch.asp)*/
@@ -118,6 +125,7 @@ input:checked + .slider:before {
 
 .reg-title {
   margin: 2%;
+  padding-top: 10px;
 }
 
 .reg-btn {

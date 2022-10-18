@@ -4,10 +4,14 @@ body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 .workout-card {
-  /* border: black solid; */
+  background-color: #dee1e530;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 4px 8px;
   background-color: #dee1e5;
   border-radius: 0.4rem;
   margin: 2%;
+}
+.workout-card:hover {
+  transform: scale(1.01);
 }
 
 .delete-btn {
